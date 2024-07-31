@@ -44,7 +44,6 @@
     "sanity"
   ],
   "dependencies": {
-    "@api/wistia": "file:.api/apis/wistia",
     "@babel/runtime": "^7.24.8",
     "@sanity/assist": "^3.0.4",
     "@sanity/client": "^6.15.20",
