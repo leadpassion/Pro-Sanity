@@ -17,20 +17,20 @@ export const sharedComponentLayoutFields = [
       defineField({
         name: 'top',
         title: 'Top',
-        type: 'number',
+        type: 'string',
         options: {
           list: PADDING_OPTIONS,
         },
-        initialValue: 64,
+        initialValue: 'lg',
       }),
       defineField({
         name: 'bottom',
         title: 'Bottom',
-        type: 'number',
+        type: 'string',
         options: {
           list: PADDING_OPTIONS,
         },
-        initialValue: 64,
+        initialValue: 'md',
       }),
     ],
   }),
@@ -47,46 +47,6 @@ export const sharedComponentLayoutFields = [
     },
     initialValue: 'dark',
     group: 'layout',
-  }),
-  defineField({
-    name: 'edgeTreatments',
-    title: 'Edge Treatments',
-    description:
-      'Add rounded corners or a slanted edge to the top or bottom of the component.',
-    type: 'object',
-    group: 'layout',
-    options: {
-      collapsible: false,
-      columns: 2,
-    },
-    fields: [
-      defineField({
-        name: 'top',
-        title: 'Top',
-        type: 'string',
-        options: {
-          list: [
-            { title: 'Straight', value: 'straight' },
-            { title: 'Rounded', value: 'rounded' },
-            { title: 'Slanted', value: 'slanted' },
-          ],
-        },
-        initialValue: 'straight',
-      }),
-      defineField({
-        name: 'bottom',
-        title: 'Bottom',
-        type: 'string',
-        options: {
-          list: [
-            { title: 'Straight', value: 'straight' },
-            { title: 'Rounded', value: 'rounded' },
-            { title: 'Slanted', value: 'slanted' },
-          ],
-        },
-        initialValue: 'straight',
-      }),
-    ],
   }),
   defineField({
     name: 'inset',
