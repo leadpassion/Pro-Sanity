@@ -85330,7 +85330,7 @@ export type Video = {
   _rev: string
   videoDetails?: {
     title?: string
-    videoProvider?: 'youtube' | 'wistia'
+    videoProvider?: 'youtube'
     videoId?: string
     thumbnail?: {
       asset?: {
