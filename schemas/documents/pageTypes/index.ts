@@ -1,0 +1,6 @@
+export * from './industryPage'
+export * from './page'
+export * from './paidLandingPage'
+export * from './personaPage'
+export * from './productPage'
+export * from './useCasePage'
