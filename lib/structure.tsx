@@ -237,7 +237,7 @@ const contentBlocksMenu = (S: StructureBuilder) =>
       S.list()
         .title('Content Building Blocks')
         .items([
-          S.documentTypeListItem('marketoForm').title('Marketo Forms'),
+          S.documentTypeListItem('hubspotForm').title('HubSpot Forms'),
           S.documentTypeListItem('cta').title('Shared CTAs'),
           S.documentTypeListItem('sharedComponent').title(
             'Shared UI Components',

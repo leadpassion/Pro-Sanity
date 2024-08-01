@@ -1,11 +1,11 @@
-import { SiMarketo } from 'react-icons/si'
+import { SiHubspot } from 'react-icons/si'
 import { defineField, defineType } from 'sanity'
 
-export const marketoForm = defineType({
-  name: 'marketoForm',
-  title: 'Marketo Form',
+export const hubspotForm = defineType({
+  name: 'hubspotForm',
+  title: 'HubSpot Form',
   type: 'document',
-  icon: SiMarketo,
+  icon: SiHubspot,
   fields: [
     defineField({
       name: 'internalName',
@@ -17,7 +17,7 @@ export const marketoForm = defineType({
     defineField({
       name: 'formId',
       title: 'Form ID',
-      description: 'This is the ID of the form in Marketo.',
+      description: 'This is the ID of the form in HubSpot.',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),

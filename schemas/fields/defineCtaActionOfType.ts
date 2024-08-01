@@ -155,8 +155,8 @@ export const defineCtaActionOfType = (
 
       // Email Capture
       defineField({
-        name: 'marketoFormId',
-        title: 'Marketo Form ID',
+        name: 'hubspotFormId',
+        title: 'HubSpot Form ID',
         type: 'string',
         hidden: ({ parent }) =>
           parent?.type !== 'emailCapture' && parent?.type !== 'popup',

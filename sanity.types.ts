@@ -499,7 +499,7 @@ export type LegalRichText = Array<
       _type: 'reference'
       _weak?: boolean
       _key: string
-      [internalGroqTypeReferenceTo]?: 'marketoForm'
+      [internalGroqTypeReferenceTo]?: 'hubspotForm'
     }
 >
 
@@ -765,7 +765,7 @@ export type ComplexRichText = Array<
             _type: 'file'
           }
         }
-        marketoFormId?: string
+        hubspotFormId?: string
         _type: 'ctaAction'
         _key: string
       }>
@@ -6855,7 +6855,7 @@ export type SharedComponent = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -10457,11 +10457,11 @@ export type SharedComponent = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -12520,11 +12520,11 @@ export type SharedComponent = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -13532,11 +13532,11 @@ export type Event = {
     [internalGroqTypeReferenceTo]?: 'person'
   }>
   embeddedForm?: {
-    marketoForm?: {
+    hubspotForm?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'marketoForm'
+      [internalGroqTypeReferenceTo]?: 'hubspotForm'
     }
     eyebrow?: {
       text?: MinimalRichText
@@ -13792,11 +13792,11 @@ export type Webinar = {
     [internalGroqTypeReferenceTo]?: 'person'
   }>
   embeddedForm?: {
-    marketoForm?: {
+    hubspotForm?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'marketoForm'
+      [internalGroqTypeReferenceTo]?: 'hubspotForm'
     }
     eyebrow?: {
       text?: MinimalRichText
@@ -14017,11 +14017,11 @@ export type Report = {
   }
   resourceLink?: string
   embeddedForm?: {
-    marketoForm?: {
+    hubspotForm?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'marketoForm'
+      [internalGroqTypeReferenceTo]?: 'hubspotForm'
     }
     eyebrow?: {
       text?: MinimalRichText
@@ -14238,9 +14238,9 @@ export type Report = {
   language?: 'en-us' | 'ja' | 'ko'
 }
 
-export type MarketoForm = {
+export type hubspotForm = {
   _id: string
-  _type: 'marketoForm'
+  _type: 'hubspotForm'
   _createdAt: string
   _updatedAt: string
   _rev: string
@@ -14269,11 +14269,11 @@ export type Guide = {
   }
   resourceLink?: string
   embeddedForm?: {
-    marketoForm?: {
+    hubspotForm?: {
       _ref: string
       _type: 'reference'
       _weak?: boolean
-      [internalGroqTypeReferenceTo]?: 'marketoForm'
+      [internalGroqTypeReferenceTo]?: 'hubspotForm'
     }
     eyebrow?: {
       text?: MinimalRichText
@@ -18737,7 +18737,7 @@ export type Page = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -21209,7 +21209,7 @@ export type Page = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -22068,7 +22068,7 @@ export type Page = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -25130,11 +25130,11 @@ export type Page = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -26128,11 +26128,11 @@ export type Page = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -30488,7 +30488,7 @@ export type PersonaPage = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -32960,7 +32960,7 @@ export type PersonaPage = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -33819,7 +33819,7 @@ export type PersonaPage = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -36881,11 +36881,11 @@ export type PersonaPage = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -37879,11 +37879,11 @@ export type PersonaPage = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -42239,7 +42239,7 @@ export type ProductPage = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -44711,7 +44711,7 @@ export type ProductPage = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -45570,7 +45570,7 @@ export type ProductPage = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -48632,11 +48632,11 @@ export type ProductPage = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -49630,11 +49630,11 @@ export type ProductPage = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -53990,7 +53990,7 @@ export type PaidLandingPage = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -56462,7 +56462,7 @@ export type PaidLandingPage = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -57321,7 +57321,7 @@ export type PaidLandingPage = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -60383,11 +60383,11 @@ export type PaidLandingPage = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -61381,11 +61381,11 @@ export type PaidLandingPage = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -65741,7 +65741,7 @@ export type IndustryPage = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -68213,7 +68213,7 @@ export type IndustryPage = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -69072,7 +69072,7 @@ export type IndustryPage = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -72134,11 +72134,11 @@ export type IndustryPage = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -73132,11 +73132,11 @@ export type IndustryPage = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -77492,7 +77492,7 @@ export type UseCasePage = {
                       _type: 'file'
                     }
                   }
-                  marketoFormId?: string
+                  hubspotFormId?: string
                 }
                 _type: 'card'
                 _key: string
@@ -79964,7 +79964,7 @@ export type UseCasePage = {
                 _type: 'file'
               }
             }
-            marketoFormId?: string
+            hubspotFormId?: string
           }
           _type: 'card'
           _key: string
@@ -80823,7 +80823,7 @@ export type UseCasePage = {
               _type: 'file'
             }
           }
-          marketoFormId?: string
+          hubspotFormId?: string
         }
         padding?: {
           top?:
@@ -83885,11 +83885,11 @@ export type UseCasePage = {
         >
         forms?: Array<{
           embeddedForm?: {
-            marketoForm?: {
+            hubspotForm?: {
               _ref: string
               _type: 'reference'
               _weak?: boolean
-              [internalGroqTypeReferenceTo]?: 'marketoForm'
+              [internalGroqTypeReferenceTo]?: 'hubspotForm'
             }
             eyebrow?: {
               text?: MinimalRichText
@@ -84883,11 +84883,11 @@ export type UseCasePage = {
         _key: string
       }
     | {
-        marketoForm?: {
+        hubspotForm?: {
           _ref: string
           _type: 'reference'
           _weak?: boolean
-          [internalGroqTypeReferenceTo]?: 'marketoForm'
+          [internalGroqTypeReferenceTo]?: 'hubspotForm'
         }
         eyebrow?: {
           text?: MinimalRichText
@@ -85231,11 +85231,11 @@ export type Cta = {
       _type: 'file'
     }
   }
-  marketoForm?: {
+  hubspotForm?: {
     _ref: string
     _type: 'reference'
     _weak?: boolean
-    [internalGroqTypeReferenceTo]?: 'marketoForm'
+    [internalGroqTypeReferenceTo]?: 'hubspotForm'
   }
   language?: 'en-us' | 'ja' | 'ko'
 }
