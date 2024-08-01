@@ -34,7 +34,6 @@ export const structure = (S: StructureBuilder) =>
       landingPagesMenu(S),
       S.divider(),
       legalPagesMenu(S),
-      S.divider(),
       S.documentTypeListItem('blogPost').title('Blog Posts'),
       S.documentTypeListItem('caseStudy').title('Case Studies'),
       eventsAndWebinarsMenu(S),
