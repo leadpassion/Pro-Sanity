@@ -10,7 +10,7 @@ export type VideoDetails = {
 
 /**
  * This function extracts the video type and ID from an embed code
- * @param {string} embed The embed code, either in youtube or wistia format
+ * @param {string} embed The embed code in YouTube format
  * @returns {VideoDetails} The video type and ID
  */
 export const getVideoDetailsFromEmbed = async (
@@ -21,12 +21,7 @@ export const getVideoDetailsFromEmbed = async (
 
   let videoDetails = {}
 
-  if (embed.includes('wistia')) {
-    videoProvider = 'wistia'
-
-    const match = embed.match(/medias\/(.+?)\.jsonp/)
-    videoId = match ? match[1] : ''
-  } else if (embed.includes('youtube')) {
+ if (embed.includes('youtube')) {
     videoProvider = 'youtube'
 
     const match = embed.match(/embed\/(.+?)"/)
@@ -40,35 +35,6 @@ export const getVideoDetailsFromEmbed = async (
 
   if (videoProvider === 'youtube') {
     videoDetails = await getYoutubeVideoDetails(videoId)
-  }
-
-  if (videoProvider === 'wistia') {
-    // sdk.auth(process.env.SANITY_STUDIO_WISTIA_API_TOKEN || '')
-
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        authorization: `Bearer ${process.env.SANITY_STUDIO_WISTIA_API_TOKEN}`,
-      },
-    }
-
-    const response = await fetch(
-      `https://api.wistia.com/v1/medias/${videoId}.json`,
-      options,
-    ).then((res) => res.json())
-
-    const thumbnail = response.thumbnail
-      ? {
-          _type: 'image',
-          _sanityAsset: `image@${response.thumbnail.url.split('?')[0]}`,
-        }
-      : undefined
-
-    videoDetails = {
-      title: response.name,
-      thumbnail,
-    }
   }
 
   const cleanVideoId = videoId.split('?')[0]
