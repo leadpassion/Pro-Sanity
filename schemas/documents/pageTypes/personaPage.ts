@@ -1,4 +1,3 @@
-import { NikanImage } from '@/lib'
 import { userIsAdministrator } from '@/utils'
 import { EditIcon, HashIcon, WrenchIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'

@@ -63,10 +63,10 @@ export const defineEmbeddedFormField = (
     fields: [
       // FORM
       defineField({
-        name: 'marketoForm',
-        title: 'Marketo Form',
+        name: 'hubspotForm',
+        title: 'HubSpot Form',
         type: 'reference',
-        to: [{ type: 'marketoForm' }],
+        to: [{ type: 'hubspotForm' }],
       }),
       defineField({
         name: 'submitBehavior',
@@ -203,7 +203,7 @@ export const defineEmbeddedFormField = (
         name: 'submitButtonText',
         title: 'Submit Button Text',
         description:
-          'The text to display on the submit button. If not provided, the default text from Marketo will be used.',
+          'The text to display on the submit button. If not provided, the default text from HubSpot will be used.',
         type: 'string',
         fieldset: 'options',
         hidden: ({ parent }) => parent?.submitBehavior !== 'stayOnPage',

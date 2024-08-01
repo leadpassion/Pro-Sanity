@@ -106,10 +106,10 @@ export const cta = defineType({
 
     // Email Capture
     defineField({
-      name: 'marketoForm',
-      title: 'Marketo Form',
+      name: 'hubspotForm',
+      title: 'HubSpot Form',
       type: 'reference',
-      to: [{ type: 'marketoForm' }],
+      to: [{ type: 'hubspotForm' }],
       hidden: ({ parent }) => parent?.type !== 'emailCapture' && parent?.type !== 'popup',
     }),
 

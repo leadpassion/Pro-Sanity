@@ -32,8 +32,8 @@ export const structure = (S: StructureBuilder) =>
       // richDocumentListMenu(S),
       mainSitePagesMenu(S),
       landingPagesMenu(S),
-      legalPagesMenu(S),
       S.divider(),
+      legalPagesMenu(S),
       S.documentTypeListItem('blogPost').title('Blog Posts'),
       S.documentTypeListItem('caseStudy').title('Case Studies'),
       eventsAndWebinarsMenu(S),
@@ -76,7 +76,6 @@ const mainSitePagesMenu = (S: StructureBuilder) =>
       S.list()
         .title('Main Site Pages')
         .items([
-          S.documentTypeListItem('productPage').title('Products'),
           solutionsMenu(S),
           S.divider(),
           // reference singleton document:
@@ -89,24 +88,18 @@ const mainSitePagesMenu = (S: StructureBuilder) =>
                 .documentId('450399dd-26cd-4b95-a0f9-1574a1d3a638'),
             ),
           S.listItem()
-            .title('The Braze Platform')
+            .title('About')
             .icon(BsQuestionCircle)
             .child(
               S.document()
                 .schemaType('page')
-                .documentId('imported-craft-26964'),
+                .documentId('6f66eef8-b9f2-4092-a818-cd1fe03a241e'),
             ),
           S.listItem()
-            .title('Get Started')
+            .title('Why Webstacks')
             .icon(StarIcon)
             .child(
-              S.document().schemaType('page').documentId('imported-craft-397'),
-            ),
-          S.listItem()
-            .title('About')
-            .icon(UserIcon)
-            .child(
-              S.document().schemaType('page').documentId('imported-craft-772'),
+              S.document().schemaType('page').documentId('3dde6e49-bb93-478a-b18f-3e68e2913a82'),
             ),
         ]),
     )
@@ -173,11 +166,11 @@ const eventsAndWebinarsMenu = (S: StructureBuilder) =>
 
 const guidesAndReportsMenu = (S: StructureBuilder) =>
   S.listItem()
-    .title('Guides & Reports')
+    .title('Downloads')
     .icon(IoAnalytics)
     .child(
       S.list()
-        .title('Guides & Reports')
+        .title('Downloads')
         .items([
           S.documentTypeListItem('guide').title('Guides'),
           S.documentTypeListItem('report').title('Reports'),
@@ -244,7 +237,7 @@ const contentBlocksMenu = (S: StructureBuilder) =>
       S.list()
         .title('Content Building Blocks')
         .items([
-          S.documentTypeListItem('marketoForm').title('Marketo Forms'),
+          S.documentTypeListItem('hubspotForm').title('HubSpot Forms'),
           S.documentTypeListItem('cta').title('Shared CTAs'),
           S.documentTypeListItem('sharedComponent').title(
             'Shared UI Components',

@@ -52,7 +52,7 @@ export const guide = defineType({
       name: 'resource',
       title: 'Resource',
       description:
-        'The resource that users will be able to download or view after submitting the Marketo form.',
+        'The resource that users will be able to download or view after submitting the HubSpot form.',
       options: { collapsible: false },
     },
   ],
@@ -86,7 +86,7 @@ export const guide = defineType({
       name: 'document',
       title: 'Document',
       description:
-        'The document that users will be able to download after submitting the Marketo form.',
+        'The document that users will be able to download after submitting the HubSpot form.',
       type: 'file',
       fieldset: 'resource',
       group: 'content',
@@ -103,7 +103,7 @@ export const guide = defineType({
       name: 'resourceLink',
       title: 'Resource Link',
       description:
-        'The link that users will be redirected to after submitting the Marketo form.',
+        'The link that users will be redirected to after submitting the HubSpot form.',
       fieldset: 'resource',
       group: 'content',
       type: 'url',

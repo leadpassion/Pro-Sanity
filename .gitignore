@@ -1,0 +1,25 @@
+node_modules/
+
+.env*
+
+build/
+
+package-lock.json
+yarn-error.log
+
+.eslintcache
+
+storybook-static/
+
+.vscode
+.DS_Store
+.react-templates
+app.js
+index.html
+
+# gatsby files
+.cache/
+
+# next files
+.next/
+sitemap.xml

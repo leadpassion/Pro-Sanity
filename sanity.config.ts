@@ -141,7 +141,7 @@ const beta = {
 // ENVIRONMENT-SPECIFIC CONFIGS
 
 const prodConfig = defineConfig({
-  title: 'Braze',
+  title: 'Webstacks',
   name: 'production',
   dataset: datasetProd,
   basePath: '/production',
@@ -154,7 +154,7 @@ const prodConfig = defineConfig({
 })
 
 const devConfig = defineConfig({
-  title: 'Braze (Dev)',
+  title: 'Webstacks (Dev)',
   name: 'development',
   dataset: datasetDev,
   basePath: '/development',

@@ -1,5 +1,5 @@
 import { DocumentPdfIcon } from '@sanity/icons'
-import { SiMarketo } from 'react-icons/si'
+import { SiHubspot } from 'react-icons/si'
 import { defineArrayMember, defineType } from 'sanity'
 import {
   defineLinkField,
@@ -67,8 +67,8 @@ export const legalRichText = defineType({
     }),
     defineArrayMember({
       type: 'reference',
-      to: [{ type: 'marketoForm' }],
-      icon: SiMarketo,
+      to: [{ type: 'hubspotForm' }],
+      icon: SiHubspot,
     }),
   ],
 })
