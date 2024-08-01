@@ -1,5 +1,5 @@
 import { SPECIAL_BRANDING_OPTIONS } from '@/lib'
-import { defineIconField } from '@/schemas/fields'
+import { icon } from '@/schemas/fields/icon'
 import { defineField } from 'sanity'
 
 export const navItemField = defineField({
@@ -24,7 +24,7 @@ export const navItemField = defineField({
       title: 'Description',
       type: 'string',
     }),
-    defineIconField(),
+    icon,
     defineField({
       name: 'specialBranding',
       title: 'Special Branding',

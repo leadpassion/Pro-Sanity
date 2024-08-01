@@ -1,8 +1,8 @@
+import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
+import { language } from '@/schemas/fields/language'
+import { seo } from '@/schemas/fields/seo'
 import { BillIcon, EditIcon, HashIcon, WrenchIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
 
 export const legalPage = defineType({
   name: 'legalPage',
@@ -41,15 +41,13 @@ export const legalPage = defineType({
       type: 'legalRichText',
       group: 'content',
     }),
-
-    defineSeoField({
-      name: 'seo',
-      title: 'SEO Settings',
-      group: 'seo',
-      slugPrefix: 'company/legal',
-      includeSlugPrefixInStoredValue: false,
-    }),
-
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'company/legal',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
     defineField({
       name: 'internalName',
       title: 'Internal Name',
@@ -58,9 +56,10 @@ export const legalPage = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
   preview: {
     select: {

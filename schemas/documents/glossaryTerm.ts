@@ -1,6 +1,6 @@
+import { language } from '@/schemas/fields/language'
 import { BookIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 
 export const glossaryTerm = defineType({
   name: 'glossaryTerm',
@@ -41,6 +41,6 @@ export const glossaryTerm = defineType({
       type: 'text',
       rows: 3,
     }),
-    defineLanguageField(),
+    language,
   ],
 })

@@ -1,19 +1,19 @@
-import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '../../fields/defineHeadingField'
+import { studioApiVersion } from '@/lib/api'
+import { heading } from '@/schemas/fields/heading'
+import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
+import { useEffect, useState } from 'react'
+import { IoRibbonOutline } from 'react-icons/io5'
 import {
-  PreviewProps,
-  SanityClient,
-  TypedObject,
+  type PreviewProps,
+  type SanityClient,
+  type TypedObject,
   defineField,
   set,
   useClient,
 } from 'sanity'
-import { IoRibbonOutline } from 'react-icons/io5'
-import { awardField } from './awardField'
-import { useEffect, useState } from 'react'
-import { studioApiVersion } from '@/lib/api'
-import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
 import { blockPreview } from 'sanity-pills'
+import { definePageComponent } from '../definePageComponent'
+import { awardField } from './awardField'
 
 interface PreviewAwardsSliderProps extends PreviewProps {
   heading: TypedObject[]
@@ -71,8 +71,8 @@ const PreviewAwardsSlider = (props: PreviewAwardsSliderProps) => {
             </Text>
           )}
           <Flex dir="row" gap={2}>
-            {companyNames.map((companyName, index) => (
-              <Card key={index} padding={1} border>
+            {companyNames.map((companyName) => (
+              <Card key={companyName} padding={1} border>
                 <Text size={1} muted>
                   {companyName}
                 </Text>
@@ -91,10 +91,13 @@ export const awardsSlider = definePageComponent({
   description: 'A component that displays a slider of awards.',
   icon: IoRibbonOutline,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'awards',
       title: 'Awards',

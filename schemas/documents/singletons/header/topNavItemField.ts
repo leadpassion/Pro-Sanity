@@ -57,9 +57,12 @@ export const topNavItemField = defineField({
       hidden: ({ parent }) => !parent?.isButton,
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          if ((context.parent as any)?.isButton && !value) {
+          const parent = context.parent as { isButton: boolean } | undefined
+
+          if (parent?.isButton && !value) {
             return 'Button style is required if the link is styled as a button.'
           }
+
           return true
         }),
       group: 'topLevel',

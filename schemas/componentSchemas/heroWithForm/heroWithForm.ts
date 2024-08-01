@@ -1,11 +1,11 @@
+import { complexComponentBody } from '@/schemas/fields'
+import { simpleEmbeddedForm } from '@/schemas/fields/embeddedForm/simpleEmbeddedForm'
+import { heading } from '@/schemas/fields/heading'
 import { BlockContentIcon } from '@sanity/icons'
-import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { defineComplexComponentBodyField } from '@/schemas/fields/defineComplexComponentBodyField/defineComplexComponentBodyField'
 import { defineField } from 'sanity'
-import { defineEmbeddedFormField } from '@/schemas/fields/defineEmbeddedFormField'
-import { trustBar } from '../trustBar'
 import { basicText } from '../basicText'
+import { definePageComponent } from '../definePageComponent'
+import { trustBar } from '../trustBar'
 
 export const heroWithForm = definePageComponent({
   name: 'heroWithForm',
@@ -13,14 +13,19 @@ export const heroWithForm = definePageComponent({
   description: 'A hero component with a form',
   icon: BlockContentIcon,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h1',
-      defaultSize: 'display-xl',
-    }),
-    defineComplexComponentBodyField({
-      name: 'body',
-      allowedCtaTypes: ['link', 'internalLink', 'glassLinkCard'],
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h1',
+        headingSize: 'display-xl',
+      },
+    },
+    {
+      ...complexComponentBody,
+      options: {
+        allowedCtaTypes: ['link', 'internalLink', 'glassLinkCard'],
+      },
+    },
     defineField({
       name: 'underHeroBody',
       title: 'Under-Hero Body',
@@ -43,11 +48,7 @@ export const heroWithForm = definePageComponent({
         {
           type: 'object',
           fields: [
-            defineEmbeddedFormField({
-              name: 'embeddedForm',
-              title: 'Form',
-              allowedSubmitBehaviors: ['stayOnPage', 'otherRedirect'],
-            }),
+            simpleEmbeddedForm,
             defineField({
               name: 'tabTitle',
               title: 'Tab Title',

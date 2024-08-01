@@ -1,8 +1,9 @@
+import { richImage } from '@/schemas/fields/richImage'
 import { ImageIcon } from '@sanity/icons'
-import { defineRichImageField } from '@/schemas/fields'
 
-export const imageBlock = defineRichImageField({
+export const imageBlock = {
+  ...richImage,
   name: 'imageBlock',
   title: 'Image Block',
   icon: ImageIcon,
-})
+}

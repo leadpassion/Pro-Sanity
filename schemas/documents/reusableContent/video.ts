@@ -23,10 +23,11 @@ export const video = defineType({
           options: {
             list: [
               { title: 'YouTube', value: 'youtube' },
+              { title: 'Wistia', value: 'wistia' },
             ],
           },
           validation: (Rule) => Rule.required(),
-          initialValue: 'youtube',
+          initialValue: 'wistia',
         }),
         defineField({
           name: 'videoId',

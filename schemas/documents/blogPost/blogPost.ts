@@ -5,13 +5,13 @@
 //
 // –------------------------------------------------
 
+import { categories } from '@/schemas/fields/categories'
+import { language } from '@/schemas/fields/language'
+import { publicationDates } from '@/schemas/fields/publicationDates'
+import { richImage } from '@/schemas/fields/richImage'
+import { seo } from '@/schemas/fields/seo'
 import { EditIcon, HashIcon, TagIcon, WrenchIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '@/schemas/fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { defineCategoriesField } from '@/schemas/fields/defineCategoriesField'
-import { defineRichImageField } from '@/schemas/fields/defineRichImageField'
-import { definePublicationDatesField } from '@/schemas/fields/definePublicationDatesField'
 
 export const blogPost = defineType({
   name: 'blogPost',
@@ -78,22 +78,23 @@ export const blogPost = defineType({
       ],
       group: 'content',
     }),
-    defineRichImageField({
+    {
+      ...richImage,
       name: 'featuredImage',
       title: 'Featured Image',
       group: 'content',
-    }),
-    definePublicationDatesField({}),
-    defineCategoriesField(),
+    },
+    publicationDates,
+    categories,
 
     // SEO
-    defineSeoField({
-      name: 'seo',
-      title: 'SEO Settings',
-      group: 'seo',
-      slugPrefix: 'resources/articles',
-      includeSlugPrefixInStoredValue: false,
-    }),
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'resources/articles',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
 
     // SETTINGS
     defineField({
@@ -113,9 +114,10 @@ export const blogPost = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
   preview: {
     select: {
@@ -128,7 +130,7 @@ export const blogPost = defineType({
     prepare({ title, internalName, excerpt, media, language }) {
       return {
         title: internalName || title,
-        subtitle: `${language ? '[' + language + '] ' : ''}${excerpt}`,
+        subtitle: `${language ? `[${language}] ` : ''}${excerpt}`,
         media,
       }
     },

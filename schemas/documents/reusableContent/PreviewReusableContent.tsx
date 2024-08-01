@@ -1,11 +1,11 @@
 import { namedColors, studioApiVersion } from '@/lib'
 import { Badge, Card, Flex, useTheme_v2 } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { PreviewProps, useClient } from 'sanity'
+import { type PreviewProps, useClient } from 'sanity'
 
 export const PreviewReusableContent = (props: PreviewProps) => {
   const [refCount, setRefCount] = useState(0)
-  const { renderDefault, _id } = props as any
+  const { renderDefault, _id } = props as PreviewProps & { _id: string }
   console.log('props', props)
   const theme = useTheme_v2()
   const isDarkMode = theme.color._dark

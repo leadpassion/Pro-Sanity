@@ -1,8 +1,9 @@
-import { definePageType } from './definePageType'
+import { seo } from '@/schemas/fields/seo'
 import { PiTarget } from 'react-icons/pi'
+import { genericPage } from './definePageType'
 
-export const page = definePageType({
-  name: 'page',
-  title: 'Page',
+export const page = {
+  ...genericPage,
   icon: PiTarget,
-})
+  fields: [...genericPage.fields, seo],
+}

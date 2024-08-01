@@ -1,12 +1,11 @@
-import { ArrowRightIcon, ProjectsIcon } from '@sanity/icons'
-import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '../../fields/defineHeadingField'
-import { defineField } from 'sanity'
-import { REFERENCABLE_RESOURCE_CARD_TYPES, resourceCard } from './resourceCard'
-import { convertCamelCaseToTitleCase } from '@/utils'
 import { BUTTON_SIZES, BUTTON_STYLES, RESOURCE_TYPES } from '@/lib'
+import { heading } from '@/schemas/fields/heading'
+import { convertCamelCaseToTitleCase } from '@/utils'
+import { ArrowRightIcon, ProjectsIcon } from '@sanity/icons'
+import { defineField } from 'sanity'
+import { definePageComponent } from '../definePageComponent'
 import { PreviewResourceCardDeck } from './PreviewResourceCardDeck'
-import { defineCtaActionOfType } from '@/schemas/fields'
+import { REFERENCABLE_RESOURCE_CARD_TYPES, resourceCard } from './resourceCard'
 
 export const resourceCardDeck = definePageComponent({
   name: 'resourceCardDeck',
@@ -22,10 +21,13 @@ export const resourceCardDeck = definePageComponent({
     },
   ],
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-2',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-2',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',
@@ -63,9 +65,12 @@ export const resourceCardDeck = definePageComponent({
       initialValue: RESOURCE_TYPES,
       validation: (Rule) =>
         Rule.custom((value, context) => {
-          if ((context.parent as any)?.mode === 'dynamic' && !value?.length) {
+          const parent = context.parent as { mode: string }
+
+          if (parent?.mode === 'dynamic' && !value?.length) {
             return 'At least one resource type must be selected.'
           }
+
           return true
         }),
     }),
@@ -124,11 +129,6 @@ export const resourceCardDeck = definePageComponent({
         _ref: 'dbbfb768-e85f-42d4-b089-9deeeb2a7a62',
       },
     }),
-    // defineCtaActionOfType(['link', 'internalLink'], {
-    //   title: 'CTA',
-    //   group: 'cta',
-    //   initialActionType: 'link',
-    // }),
   ],
   preview: {
     select: {
@@ -139,7 +139,7 @@ export const resourceCardDeck = definePageComponent({
       const cardsLength = resources?.length
 
       const subtitle = cardsLength
-        ? `${resources?.length} resource card` + (cardsLength > 1 ? 's' : '')
+        ? `${resources?.length} resource card${cardsLength > 1 ? 's' : ''}`
         : 'No resource cards added yet'
 
       return {

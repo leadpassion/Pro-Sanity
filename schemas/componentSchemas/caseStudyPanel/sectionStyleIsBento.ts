@@ -1,4 +1,7 @@
-import { ConditionalPropertyCallbackContext, ValidationContext } from 'sanity'
+import type {
+  ConditionalPropertyCallbackContext,
+  ValidationContext,
+} from 'sanity'
 
 export const sectionStyleIsBento = (
   context: ValidationContext | ConditionalPropertyCallbackContext,

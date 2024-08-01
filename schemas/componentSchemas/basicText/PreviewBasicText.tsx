@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewBasicTextProps extends PreviewProps {
@@ -18,8 +18,8 @@ export const PreviewBasicText = (props: PreviewBasicTextProps) => {
     return renderDefault({ ...props, subtitle: 'No text added' })
   }
 
-  const bodyString = blockPreview(body)?.trim().slice(0, 200) + '...'
-  const bodyRightString = blockPreview(bodyRight)?.trim().slice(0, 200) + '...'
+  const bodyString = `${blockPreview(body)?.trim().slice(0, 200)}...`
+  const bodyRightString = `${blockPreview(bodyRight)?.trim().slice(0, 200)}...`
 
   return (
     <Box>

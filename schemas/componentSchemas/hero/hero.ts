@@ -1,3 +1,11 @@
+import { GenericInputWithJsonView } from '@/components/GenericInputWithJsonView'
+import { complexComponentBody } from '@/schemas/fields'
+import { simpleEmbeddedForm } from '@/schemas/fields/embeddedForm/simpleEmbeddedForm'
+import { eyebrow } from '@/schemas/fields/eyebrow'
+import { heading } from '@/schemas/fields/heading'
+import { richImage } from '@/schemas/fields/richImage'
+import { sharedComponentLayoutFields } from '@/schemas/fields/sharedComponentLayoutFields'
+import { sharedComponentSettingsFields } from '@/schemas/fields/sharedComponentSettingsFields'
 import {
   BlockContentIcon,
   ControlsIcon,
@@ -6,19 +14,9 @@ import {
   PanelLeftIcon,
   PanelRightIcon,
 } from '@sanity/icons'
-import {
-  defineEyebrowField,
-  defineHeadingField,
-  defineComplexComponentBodyField,
-  defineMaskableMediaFields,
-  sharedComponentLayoutFields,
-  sharedComponentSettingsFields,
-  defineEmbeddedFormField,
-} from '@/schemas/fields'
 import { defineArrayMember, defineField } from 'sanity'
-import { ctaCard } from './ctaCard/ctaCard'
-import { GenericInputWithJsonView } from '@/components/GenericInputWithJsonView'
 import { blockPreview } from 'sanity-pills'
+import { ctaCard } from './ctaCard/ctaCard'
 
 export const hero = defineField({
   name: 'hero',
@@ -81,12 +79,13 @@ export const hero = defineField({
       fieldset: 'eyebrow',
       group: 'left',
     }),
-    defineEyebrowField({
+    {
+      ...eyebrow,
       title: 'Standard Eyebrow',
       fieldset: 'eyebrow',
       group: 'left',
       hidden: ({ parent }) => parent?.eyebrowType !== 'standard',
-    }),
+    },
     defineField({
       name: 'pageSwitcherLinks',
       title: 'Page Switcher Links',
@@ -115,26 +114,32 @@ export const hero = defineField({
         }),
       ],
     }),
-    defineHeadingField({
-      defaultHeadingLevel: 'h1',
-      defaultSize: 'display-xl',
+    {
+      ...heading,
       group: 'left',
-    }),
-    defineComplexComponentBodyField({
+      initialValue: {
+        headingLevel: 'h1',
+        headingSize: 'display-xl',
+      },
+    },
+    {
+      ...complexComponentBody,
       name: 'bodyLeft',
       title: 'Body (Left)',
       description:
         'This content is shown on the left side of the hero. If the alignment is set to center, this content will be centered.',
       group: 'left',
-      allowedCtaTypes: [
-        'link',
-        'internalLink',
-        'emailCapture',
-        'playVideo',
-        'glassLinkCard',
-      ],
-      customBodyComponentTypes: [ctaCard],
-    }),
+      of: [...complexComponentBody.of, ctaCard],
+      options: {
+        allowedCtaTypes: [
+          'link',
+          'internalLink',
+          'emailCapture',
+          'playVideo',
+          'glassLinkCard',
+        ],
+      },
+    },
 
     // RIGHT
     defineField({
@@ -151,33 +156,182 @@ export const hero = defineField({
       },
       hidden: ({ parent }) => parent?.alignment === 'vertical',
     }),
-    ...defineMaskableMediaFields({
-      group: 'right',
+
+    // Maskable Media Fields
+    defineField({
+      name: 'mediaType',
+      title: 'Media Type',
+      type: 'string',
       hidden: ({ parent }) =>
         parent?.alignment === 'vertical' ||
         parent?.rightContentType !== 'media',
+      options: {
+        list: [
+          {
+            title: 'Image',
+            value: 'image',
+          },
+          {
+            title: 'Image Gallery',
+            value: 'imageGallery',
+          },
+          {
+            title: 'Video',
+            value: 'video',
+          },
+          {
+            title: 'Testimonials',
+            value: 'testimonials',
+          },
+          {
+            title: 'None',
+            value: 'none',
+          },
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'image',
     }),
-    defineComplexComponentBodyField({
+    defineField({
+      ...richImage,
+      name: 'image',
+      title: 'Image',
+      group: 'right',
+      hidden: (context) => {
+        const parent = context.parent
+
+        const hiddenByParent =
+          parent?.alignment === 'vertical' ||
+          parent?.rightContentType !== 'media'
+
+        const hiddenByThis = parent.mediaType !== 'image'
+
+        return hiddenByParent || hiddenByThis
+      },
+    }),
+    defineField({
+      name: 'imageGalleryImages',
+      title: 'Images',
+      type: 'array',
+      of: [{ type: 'image' }],
+      group: 'right',
+      hidden: (context) => {
+        const parent = context.parent
+
+        const hiddenByParent =
+          parent?.alignment === 'vertical' ||
+          parent?.rightContentType !== 'media'
+
+        const hiddenByThis = parent.mediaType !== 'imageGallery'
+
+        return hiddenByParent || hiddenByThis
+      },
+    }),
+    defineField({
+      name: 'video',
+      title: 'Video',
+      type: 'reference',
+      to: [{ type: 'video' }],
+      group: 'right',
+      hidden: (context) => {
+        const parent = context.parent
+
+        const hiddenByParent =
+          parent?.alignment === 'vertical' ||
+          parent?.rightContentType !== 'media'
+
+        const hiddenByThis = context.parent.mediaType !== 'video'
+
+        return hiddenByParent || hiddenByThis
+      },
+    }),
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonials',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'testimonial' }],
+        },
+      ],
+      group: 'right',
+      hidden: (context) => {
+        const parent = context.parent
+
+        const hiddenByParent =
+          parent?.alignment === 'vertical' ||
+          parent?.rightContentType !== 'media'
+
+        const hiddenByThis = context.parent.mediaType !== 'testimonials'
+
+        return hiddenByParent || hiddenByThis
+      },
+    }),
+    defineField({
+      name: 'mask',
+      title: 'Mask',
+      type: 'string',
+      options: {
+        list: [
+          {
+            title: 'None',
+            value: 'none',
+          },
+          {
+            title: 'Swoosh 1',
+            value: 'swoosh1',
+          },
+          {
+            title: 'Swoosh 2',
+            value: 'swoosh2',
+          },
+        ],
+        layout: 'radio',
+        direction: 'horizontal',
+      },
+      initialValue: 'none',
+      group: 'right',
+      hidden: (context) => {
+        const parent = context.parent
+
+        const hiddenByParent =
+          parent?.alignment === 'vertical' ||
+          parent?.rightContentType !== 'media'
+
+        const hiddenByThis = ['none', 'imageGallery', 'tesimonials'].includes(
+          context.parent.mediaType,
+        )
+        return hiddenByParent || hiddenByThis
+      },
+    }),
+
+    {
+      ...complexComponentBody,
       name: 'bodyRight',
       title: 'Body (Right)',
       group: 'right',
-      allowedCtaTypes: [
-        'link',
-        'internalLink',
-        'emailCapture',
-        'playVideo',
-        'glassLinkCard',
-      ],
-      customBodyComponentTypes: [ctaCard],
+      of: [...complexComponentBody.of, ctaCard],
       hidden: ({ parent }) => parent?.rightContentType !== 'body',
-    }),
-    defineEmbeddedFormField({
+      options: {
+        allowedCtaTypes: [
+          'link',
+          'internalLink',
+          'emailCapture',
+          'playVideo',
+          'glassLinkCard',
+        ],
+      },
+    },
+
+    {
+      ...simpleEmbeddedForm,
       name: 'embeddedForm',
       title: 'Form',
       group: 'right',
-      allowedSubmitBehaviors: ['stayOnPage', 'otherRedirect'],
       hidden: ({ parent }) => parent?.rightContentType !== 'form',
-    }),
+    },
 
     // LAYOUT
     defineField({

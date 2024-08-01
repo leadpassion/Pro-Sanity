@@ -1,29 +1,34 @@
-import { CgScrollV } from 'react-icons/cg'
-import { FieldDefinition, PreviewProps, defineField } from 'sanity'
-import { blockPreview } from 'sanity-pills'
 import { Box, Stack, Text } from '@sanity/ui'
-import { definePageComponent } from '../definePageComponent'
-import { headingBlock } from '../headingBlock'
-import { scroller } from '../scroller'
-import { switchback } from '../switchback'
-import { trustBar } from '../trustBar'
-import { caseStudyPanel } from '../caseStudyPanel'
-import { resourceCardDeck } from '../resourceCardDeck'
+import { CgScrollV } from 'react-icons/cg'
+import {
+  type FieldDefinition,
+  type PreviewProps,
+  type TypedObject,
+  defineField,
+} from 'sanity'
+import { blockPreview } from 'sanity-pills'
+import { accordion } from '../accordion'
 import { awardsSlider } from '../awardsSlider'
-import { conversionPanel } from '../conversionPanel'
-import { hero } from '../hero'
 import { bentoBox } from '../bentoBox'
+import { cardDeck } from '../cardDeck'
+import { caseStudyPanel } from '../caseStudyPanel'
+import { conversionPanel } from '../conversionPanel'
+import { definePageComponent } from '../definePageComponent'
+import { embed } from '../embed'
+import { floatingLinks } from '../floatingLinks'
+import { headingBlock } from '../headingBlock'
+import { hero } from '../hero'
 import { imageGallery } from '../imageGallery'
 import { overlappingCards } from '../overlappingCards'
-import { statsPanel } from '../statsPanel'
+import { resourceCardDeck } from '../resourceCardDeck'
+import { scroller } from '../scroller'
 import { sharedComponentReference } from '../sharedComponentReference'
-import { cardDeck } from '../cardDeck'
-import { testimonialPanel } from '../testimonialPanel'
-import { embed } from '../embed'
-import { videoEmbed } from '../videoEmbed'
-import { floatingLinks } from '../floatingLinks'
+import { statsPanel } from '../statsPanel'
+import { switchback } from '../switchback'
 import { switcher } from '../switcher'
-import { accordion } from '../accordion'
+import { testimonialPanel } from '../testimonialPanel'
+import { trustBar } from '../trustBar'
+import { videoEmbed } from '../videoEmbed'
 
 interface PreviewSectionProps extends PreviewProps {
   componentTitles: string[]
@@ -64,7 +69,7 @@ const PreviewSection = (props: PreviewSectionProps) => {
       {renderDefault(props)}
       <Stack space={2} paddingTop={1} paddingX={3} paddingBottom={3}>
         {componentTitles.map((sectionTitle, index) => (
-          <Text size={1} key={index} muted>
+          <Text size={1} key={sectionTitle} muted>
             {index + 1}. {sectionTitle}
           </Text>
         ))}
@@ -103,7 +108,7 @@ export const section = definePageComponent({
     prepare({ components }) {
       const componentTitles = components?.map(
         // TODO: Update this to accomodate different section types
-        (section: any) => {
+        (section: { _type: string; heading?: { text?: TypedObject[] } }) => {
           const title =
             blockPreview(section.heading?.text).trim() || 'Untitled Section'
           const type = section._type

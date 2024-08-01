@@ -1,7 +1,7 @@
 import { ICON_COLORS } from '@/lib'
+import { icon } from '@/schemas/fields/icon'
 import { defineField } from 'sanity'
 import { benefit } from './benefit'
-import { defineIconField } from '@/schemas/fields'
 
 export const benefitGroup = defineField({
   name: 'benefitGroup',
@@ -21,9 +21,10 @@ export const benefitGroup = defineField({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineIconField({
+    {
+      ...icon,
       fieldset: 'icon',
-    }),
+    },
     defineField({
       name: 'iconColor',
       title: 'Icon Color',

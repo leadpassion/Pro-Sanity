@@ -1,3 +1,9 @@
+import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
+import { categories } from '@/schemas/fields/categories'
+import { language } from '@/schemas/fields/language'
+import { metric } from '@/schemas/fields/metric'
+import { publicationDates } from '@/schemas/fields/publicationDates'
+import { seo } from '@/schemas/fields/seo'
 import {
   BarChartIcon,
   EditIcon,
@@ -6,13 +12,7 @@ import {
   WrenchIcon,
 } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
-import { defineCategoriesField } from '../fields/defineCategoriesField'
-import { definePublicationDatesField } from '../fields/definePublicationDatesField'
-import { defineRichImageField } from '../fields/defineRichImageField'
-import { defineMetricField } from '../fields/defineMetricField'
+import { richImage } from '../fields/richImage'
 
 export const caseStudy = defineType({
   name: 'caseStudy',
@@ -105,7 +105,7 @@ export const caseStudy = defineType({
       name: 'metrics',
       title: 'Metrics',
       type: 'array',
-      of: [defineMetricField()],
+      of: [metric],
       group: 'content',
       // Can have between 0 and 3 metrics
       validation: (Rule) =>
@@ -149,11 +149,12 @@ export const caseStudy = defineType({
         }),
       ],
     }),
-    defineRichImageField({
+    {
+      ...richImage,
       name: 'featuredImage',
       title: 'Featured Image',
       group: 'content',
-    }),
+    },
     defineField({
       name: 'authors',
       title: 'Author',
@@ -166,15 +167,15 @@ export const caseStudy = defineType({
       ],
       group: 'content',
     }),
-    definePublicationDatesField({}),
-    defineCategoriesField(),
-    defineSeoField({
-      name: 'seo',
-      title: 'SEO Settings',
-      group: 'seo',
-      slugPrefix: 'customers',
-      includeSlugPrefixInStoredValue: false,
-    }),
+    publicationDates,
+    categories,
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'customers',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
     defineField({
       name: 'hideFromListing',
       title: 'Hide from Listing?',
@@ -192,9 +193,10 @@ export const caseStudy = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
   preview: {
     select: {

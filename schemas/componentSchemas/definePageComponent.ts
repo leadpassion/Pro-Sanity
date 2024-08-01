@@ -1,3 +1,5 @@
+import { sharedComponentLayoutFields } from '@/schemas/fields/sharedComponentLayoutFields'
+import { sharedComponentSettingsFields } from '@/schemas/fields/sharedComponentSettingsFields'
 import {
   CogIcon,
   EditIcon,
@@ -5,12 +7,14 @@ import {
   ImageIcon,
   PanelLeftIcon,
 } from '@sanity/icons'
-import { FieldDefinition, FieldGroup, PreviewConfig, defineField } from 'sanity'
-import { sharedComponentLayoutFields } from '../fields/sharedComponentLayoutFields'
-import { sharedComponentSettingsFields } from '../fields/sharedComponentSettingsFields'
-import { ComponentType, ReactNode } from 'react'
-import { GenericInputWithJsonView } from '@/components/GenericInputWithJsonView'
+import type { ComponentType, ReactNode } from 'react'
 import { TbForms } from 'react-icons/tb'
+import {
+  type FieldDefinition,
+  type FieldGroup,
+  type PreviewConfig,
+  defineField,
+} from 'sanity'
 
 interface FieldDefinitionOptions {
   name: string
@@ -26,7 +30,7 @@ interface FieldDefinitionOptions {
   }[]
   fields?: FieldDefinition[]
   preview?: PreviewConfig
-  components?: any
+  components?: Record<string, ComponentType>
 }
 
 export const definePageComponent = ({
@@ -52,6 +56,7 @@ export const definePageComponent = ({
       ...components,
       // input: GenericInputWithJsonView,
     },
+    // @ts-expect-error - this is a valid type
     groups: [
       {
         name: 'content',

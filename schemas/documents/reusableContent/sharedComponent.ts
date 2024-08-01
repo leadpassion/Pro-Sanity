@@ -1,15 +1,13 @@
 import { ArrayInputWithJsonView } from '@/components/ArrayInputWithJsonView'
-import { alphabetizeByType } from '@/utils'
-import { ComponentIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 import {
   accordion,
+  agenda,
   awardsSlider,
   basicText,
   bentoBox,
   brazeBenefitsPanel,
   brazeLeadershipPanel,
+  brazeOfficesPanel,
   caseStudyPanel,
   conversionPanel,
   floatingLinks,
@@ -18,6 +16,7 @@ import {
   heroWithForm,
   imageGallery,
   jobListingPanel,
+  logoLinks,
   overlappingCards,
   resourceCardDeck,
   scroller,
@@ -25,13 +24,14 @@ import {
   statsPanel,
   switchback,
   trustBar,
-  brazeOfficesPanel,
-  logoLinks,
-  agenda,
 } from '@/schemas/componentSchemas'
 import { switcher } from '@/schemas/componentSchemas/switcher'
-import { defineEmbeddedFormField } from '@/schemas/fields'
+import { simpleEmbeddedForm } from '@/schemas/fields/embeddedForm/simpleEmbeddedForm'
+import { language } from '@/schemas/fields/language'
 import { defineCalloutUIField } from '@/schemas/utilities'
+import { alphabetizeByType } from '@/utils'
+import { ComponentIcon } from '@sanity/icons'
+import { defineField, defineType } from 'sanity'
 import { PreviewReusableContent } from './PreviewReusableContent'
 
 export const sharedComponent = defineType({
@@ -79,7 +79,7 @@ export const sharedComponent = defineType({
         basicText,
         logoLinks,
         agenda,
-        defineEmbeddedFormField(),
+        simpleEmbeddedForm,
         // Specific types for shared components
         jobListingPanel,
         brazeBenefitsPanel,
@@ -90,7 +90,7 @@ export const sharedComponent = defineType({
         input: ArrayInputWithJsonView,
       },
     }),
-    defineLanguageField(),
+    language,
   ],
   components: {
     preview: PreviewReusableContent,

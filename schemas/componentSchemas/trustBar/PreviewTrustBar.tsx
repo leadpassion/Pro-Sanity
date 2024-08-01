@@ -1,7 +1,7 @@
+import { studioApiVersion } from '@/lib/api'
 import { Box, Flex, Text } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { studioApiVersion } from '@/lib/api'
-import { PreviewProps, SanityClient, useClient } from 'sanity'
+import { type PreviewProps, type SanityClient, useClient } from 'sanity'
 
 interface PreviewTrustBarProps extends PreviewProps {
   companies: {
@@ -45,9 +45,9 @@ export const PreviewTrustBar = (props: PreviewTrustBarProps) => {
         <Box padding={3}>
           <div style={{ overflowX: 'scroll' }}>
             <Flex dir="row" gap={2}>
-              {companyNames?.map((company, index) => (
+              {companyNames?.map((company) => (
                 <Box
-                  key={`company-${index}`}
+                  key={`company-${company.name}`}
                   padding={1}
                   paddingBottom={2}
                   style={{

@@ -7,8 +7,8 @@
 // –------------------------------------------------
 
 import { COLORS } from '@/lib'
-import { BlockDecoratorProps, defineArrayMember, defineType } from 'sanity'
-import { defineTokenReferenceField } from '../defineTokenReferenceField'
+import { tokenReference } from '@/schemas/fields/tokenReference'
+import { type BlockDecoratorProps, defineArrayMember, defineType } from 'sanity'
 
 const PurpleDecorator = (props: BlockDecoratorProps) => (
   <span style={{ color: COLORS.purple }}>{props.children}</span>
@@ -38,7 +38,7 @@ export const colorablePlainText = defineType({
   of: [
     defineArrayMember({
       type: 'block',
-      of: [defineTokenReferenceField()],
+      of: [tokenReference],
       styles: [],
       lists: [],
       marks: {

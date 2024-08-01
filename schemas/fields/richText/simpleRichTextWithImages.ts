@@ -6,10 +6,11 @@
 //
 // –------------------------------------------------
 
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
+import { richImage } from '@/schemas/fields/richImage'
+import { tokenReference } from '@/schemas/fields/tokenReference'
 import { defineArrayMember, defineType } from 'sanity'
-import { defineRichImageField } from '../defineRichImageField'
-import { defineInternalLinkField, defineLinkField } from '../linkTypes'
-import { defineTokenReferenceField } from '../defineTokenReferenceField'
 
 export const simpleRichTextWithImages = defineType({
   name: 'simpleRichTextWithImages',
@@ -18,13 +19,13 @@ export const simpleRichTextWithImages = defineType({
   of: [
     defineArrayMember({
       type: 'block',
-      of: [defineTokenReferenceField()],
+      of: [tokenReference],
       // This config limits the styles can be applied to text in the editor
       // Specifically, this removes the default H1 option to avoid conflict
       // with the blog post title.
       styles: [],
       marks: {
-        annotations: [defineLinkField(), defineInternalLinkField()],
+        annotations: [link, internalLink],
         decorators: [
           {
             title: 'Strong',
@@ -41,6 +42,6 @@ export const simpleRichTextWithImages = defineType({
         ],
       },
     }),
-    defineRichImageField(),
+    richImage,
   ],
 })

@@ -1,11 +1,9 @@
-import { userIsAdministrator } from '@/utils'
-import { EditIcon, HashIcon, WrenchIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
-import { definePageBodyField } from '../../fields/definePageBodyField'
-import { defineSeoField } from '@/schemas/fields/defineSeoField'
-import { definePageType } from './definePageType'
+import { seo } from '@/schemas/fields/seo'
+import { genericPage } from './definePageType'
 
-export const personaPage = definePageType({
+export const personaPage = {
+  ...genericPage,
   name: 'personaPage',
   title: 'Persona Page',
-})
+  fields: [...genericPage.fields, seo],
+}

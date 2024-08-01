@@ -1,8 +1,8 @@
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
+import { heading } from '@/schemas/fields/heading'
+import { language } from '@/schemas/fields/language'
 import { BiHealth } from 'react-icons/bi'
 import { defineField, defineType } from 'sanity'
 import { benefitsForCountry } from './benefitsForCountry'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 
 export const brazeBenefits = defineType({
   name: 'brazeBenefits',
@@ -18,10 +18,13 @@ export const brazeBenefits = defineType({
       // This is a hidden field that is used to set the title of the document in the studio
       hidden: true,
     },
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',
@@ -33,7 +36,7 @@ export const brazeBenefits = defineType({
       type: 'array',
       of: [benefitsForCountry],
     }),
-    defineLanguageField(),
+    language,
   ],
   preview: {
     select: {

@@ -1,4 +1,5 @@
-import { defineInternalLinkField, defineLinkField } from '@/schemas/fields'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
 import { PiArrowSquareRight } from 'react-icons/pi'
 import { defineField } from 'sanity'
 import { PreviewCtaCard } from './PreviewCtaCard'
@@ -35,14 +36,16 @@ export const ctaCard = defineField({
       },
       initialValue: 'internal',
     }),
-    defineLinkField({
+    {
+      ...link,
       name: 'externalLink',
       title: 'External Link',
       hidden: ({ parent }) => parent?.linkType !== 'external',
-    }),
-    defineInternalLinkField({
+    },
+    {
+      ...internalLink,
       hidden: ({ parent }) => parent?.linkType !== 'internal',
-    }),
+    },
   ],
   preview: {
     select: {

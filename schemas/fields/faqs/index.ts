@@ -1,1 +1,1 @@
-export * from './defineFaqsField'
+export * from './faqs'

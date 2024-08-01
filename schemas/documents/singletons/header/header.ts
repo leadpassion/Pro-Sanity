@@ -1,10 +1,10 @@
 import { ControlsIcon, EditIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
 import { RiLayoutTopLine } from 'react-icons/ri'
+import { defineField, defineType } from 'sanity'
 
-import { topNavItemField } from './topNavItemField'
+import { language } from '@/schemas/fields/language'
 import { headerLanguagesField } from './headerLanguagesField'
-import { defineLanguageField } from '@/schemas/fields'
+import { topNavItemField } from './topNavItemField'
 
 export const header = defineType({
   name: 'globalHeader',
@@ -47,7 +47,10 @@ export const header = defineType({
       group: 'settings',
       hidden: true,
     }),
-    defineLanguageField({ group: 'settings' }),
+    {
+      ...language,
+      group: 'settings',
+    },
   ],
   preview: {
     select: {

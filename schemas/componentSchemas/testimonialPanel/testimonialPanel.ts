@@ -1,7 +1,7 @@
+import { heading } from '@/schemas/fields/heading'
+import { CommentIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
 import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { CommentIcon } from '@sanity/icons'
 import { PreviewTestimonialPanel } from './PreviewTestimonialPanel'
 
 export const testimonialPanel = definePageComponent({
@@ -10,10 +10,13 @@ export const testimonialPanel = definePageComponent({
   description: 'A panel showing 1 or more testimonials',
   icon: CommentIcon,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',

@@ -1,9 +1,9 @@
-import { definePageComponent } from '../definePageComponent'
+import { heading } from '@/schemas/fields/heading'
 import { BsStackOverflow } from 'react-icons/bs'
-import { card } from './card'
-import { PreviewCardDeck } from './PreviewCardDeck'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
 import { defineField } from 'sanity'
+import { definePageComponent } from '../definePageComponent'
+import { PreviewCardDeck } from './PreviewCardDeck'
+import { card } from './card'
 
 export const cardDeck = definePageComponent({
   name: 'cardDeck',
@@ -11,10 +11,13 @@ export const cardDeck = definePageComponent({
   description: 'A panel of cards arrayed in columns',
   icon: BsStackOverflow,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',

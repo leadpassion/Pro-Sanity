@@ -1,10 +1,10 @@
+import { categories } from '@/schemas/fields/categories'
+import { language } from '@/schemas/fields/language'
+import { richImage } from '@/schemas/fields/richImage'
+import { seo } from '@/schemas/fields/seo'
 import { EditIcon, HashIcon, TagIcon, WrenchIcon } from '@sanity/icons'
 import { GoVideo } from 'react-icons/go'
 import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { defineCategoriesField } from '../fields/defineCategoriesField'
-import { defineRichImageField } from '../fields/defineRichImageField'
 
 export const videoPage = defineType({
   name: 'videoPage',
@@ -56,22 +56,26 @@ export const videoPage = defineType({
       type: 'simpleRichTextWithImages',
       group: 'content',
     }),
-    defineRichImageField({
+    {
+      ...richImage,
       name: 'featuredImage',
       title: 'Featured Image',
       group: 'content',
-    }),
+    },
     defineField({
       name: 'date',
       title: 'Date',
       type: 'datetime',
       group: 'content',
     }),
-    defineCategoriesField(),
-    defineSeoField({
-      slugPrefix: 'resources/videos',
-      includeSlugPrefixInStoredValue: false,
-    }),
+    categories,
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'resources/videos',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
     defineField({
       name: 'internalName',
       title: 'Internal Name',
@@ -93,8 +97,9 @@ export const videoPage = defineType({
       initialValue: false,
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
 })

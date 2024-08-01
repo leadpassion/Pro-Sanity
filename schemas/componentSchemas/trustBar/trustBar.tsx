@@ -1,9 +1,9 @@
+import { richImage } from '@/schemas/fields/richImage'
+import { ImageIcon } from '@sanity/icons'
+import { FaEllipsisH } from 'react-icons/fa'
 import { defineField } from 'sanity'
 import { definePageComponent } from '../definePageComponent'
-import { FaEllipsisH } from 'react-icons/fa'
 import { PreviewTrustBar } from './PreviewTrustBar'
-import { ImageIcon } from '@sanity/icons'
-import { defineRichImageField } from '@/schemas/fields/defineRichImageField'
 
 export const trustBar = definePageComponent({
   name: 'trustBar',
@@ -44,11 +44,12 @@ export const trustBar = definePageComponent({
           type: 'reference',
           to: [{ type: 'company' }],
         },
-        defineRichImageField({
+        {
+          ...richImage,
           name: 'logo',
           title: 'Just a Logo',
           icon: ImageIcon,
-        }),
+        },
       ],
     }),
   ],

@@ -1,7 +1,7 @@
 import { studioApiVersion } from '@/lib'
 import { Box, Card, Flex, Text } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { PreviewProps, useClient } from 'sanity'
+import { type PreviewProps, useClient } from 'sanity'
 
 interface PreviewResourceCardDeckProps extends PreviewProps {
   mode: 'dynamic' | 'manual'
@@ -32,7 +32,7 @@ export const PreviewResourceCardDeck = (
 
     const fetchResourceTitles = async () => {
       const resourceTitles = await client.fetch(
-        `*[_id in $resourceRefs].title`,
+        '*[_id in $resourceRefs].title',
         {
           resourceRefs,
         },
@@ -67,10 +67,10 @@ export const PreviewResourceCardDeck = (
             wrap="nowrap"
             style={{ overflowX: 'scroll' }}
           >
-            {resourceTitles?.map((title, index) => {
+            {resourceTitles?.map((title) => {
               return (
                 <Card
-                  key={index}
+                  key={title}
                   padding={2}
                   marginBottom={3}
                   border

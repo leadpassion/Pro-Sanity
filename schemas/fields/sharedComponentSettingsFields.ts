@@ -1,4 +1,4 @@
-import { FieldDefinition, defineField } from 'sanity'
+import { type FieldDefinition, defineField } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 export const sharedComponentSettingsFields: FieldDefinition[] = [
@@ -12,7 +12,13 @@ export const sharedComponentSettingsFields: FieldDefinition[] = [
       source: (_, options) => {
         if (!options.parent) return
 
-        const { title, name, heading, _key, _type } = options.parent as any
+        const { title, name, heading, _key, _type } = options.parent as {
+          title?: string
+          name?: string
+          heading?: { text?: string }
+          _key: string
+          _type: string
+        }
 
         const typeAndKey = `${_type}-${_key}`
 

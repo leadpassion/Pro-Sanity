@@ -1,10 +1,10 @@
+import { RESOURCE_TYPES } from '@/lib'
+import { categories } from '@/schemas/fields/categories'
+import { language } from '@/schemas/fields/language'
+import { pageBody } from '@/schemas/fields/pageBody'
+import { seo } from '@/schemas/fields/seo'
 import { CogIcon, EditIcon, HashIcon, RocketIcon, TagIcon } from '@sanity/icons'
 import { defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { RESOURCE_TYPES } from '@/lib'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { defineCategoriesField } from '../fields/defineCategoriesField'
-import { definePageBodyField } from '../fields'
 
 export const solutionsPartner = defineType({
   name: 'solutionsPartner',
@@ -69,18 +69,16 @@ export const solutionsPartner = defineType({
       to: RESOURCE_TYPES.map((type) => ({ type })),
       group: 'basics',
     },
-    definePageBodyField({
+    {
+      ...pageBody,
       group: 'basics',
-    }),
-    defineLanguageField({
+    },
+    {
+      ...language,
       group: 'settings',
-    }),
-    defineCategoriesField(),
-    defineSeoField({
-      name: 'seo',
-      title: 'SEO Settings',
-      group: 'seo',
-    }),
+    },
+    categories,
+    seo,
   ],
   preview: {
     select: {

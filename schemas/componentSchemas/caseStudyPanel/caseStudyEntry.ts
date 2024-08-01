@@ -1,7 +1,7 @@
+import { metric } from '@/schemas/fields/metric'
 import { BarChartIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
 import { sectionStyleIsBento } from './sectionStyleIsBento'
-import { defineMetricField } from '@/schemas/fields/defineMetricField'
 
 export const caseStudyField = defineField({
   name: 'caseStudyEntry',
@@ -39,7 +39,7 @@ export const caseStudyField = defineField({
       title: 'Metrics',
       description: 'The metrics to display for this case study',
       type: 'array',
-      of: [defineMetricField()],
+      of: [metric],
       validation: (Rule) =>
         Rule.max(2).warning(
           'A maximum of 2 metrics are allowed per case study.',
@@ -115,8 +115,14 @@ export const caseStudyField = defineField({
             parent?.type !== 'customText' || !parent?.includeCta,
           validation: (Rule) =>
             Rule.custom((value, context) => {
-              const parent = context.parent as any | undefined
-              if (parent.type === 'customText' && parent.includeCta && !value) {
+              const parent = context.parent as
+                | { type: string; includeCta: boolean }
+                | undefined
+              if (
+                parent?.type === 'customText' &&
+                parent?.includeCta &&
+                !value
+              ) {
                 return 'CTA Label is required for Custom Text'
               }
 

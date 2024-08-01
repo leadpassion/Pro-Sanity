@@ -240,24 +240,18 @@ export const PAGE_COMPONENT_BACKGROUND_COLORS = [
   },
 ]
 
-const paddingPixelOptions = [
-  { title: 'xs', value: 'xs' },
-  { title: 'sm', value: 'sm' },
-  { title: 'md', value: 'md' },
-  { title: 'lg', value: 'lg' },
-  { title: 'xl', value: 'xl' },
-  { title: '2xl', value: '2xl' },
-  { title: '3xl', value: '3xl' },
-  { title: '4xl', value: '4xl' },
-  { title: '5xl', value: '5xl' },
-  { title: '6xl', value: '6xl' },
-  { title: '7xl', value: '7xl' },
-];
+const paddingPixelOptions = Array.from({ length: 31 }, (_, i) => {
+  const value = (i - 15) * 8
+  return {
+    title: `${value}px`,
+    value: value,
+  }
+})
 
-export const PADDING_OPTIONS: TitledListValue<string>[] = [
+export const PADDING_OPTIONS: TitledListValue<number>[] = [
   {
     title: 'None',
-    value: 'none',
+    value: 0,
   },
   ...paddingPixelOptions,
 ]
@@ -280,12 +274,28 @@ export const TEXT_SIZES: TitledListValue<string>[] = [
     value: 'lg',
   },
   {
-    title: 'xl',
-    value: 'xl',
+    title: 'Display xs',
+    value: 'display-xs',
   },
   {
-    title: '2xl',
-    value: '2xl',
+    title: 'Display sm',
+    value: 'display-sm',
+  },
+  {
+    title: 'Display md',
+    value: 'display-md',
+  },
+  {
+    title: 'Display lg',
+    value: 'display-lg',
+  },
+  {
+    title: 'Display xl',
+    value: 'display-xl',
+  },
+  {
+    title: 'Display 2xl',
+    value: 'display-2xl',
   },
 ]
 

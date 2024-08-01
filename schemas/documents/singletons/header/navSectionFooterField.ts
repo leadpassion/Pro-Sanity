@@ -1,7 +1,7 @@
 import { SPECIAL_BRANDING_OPTIONS } from '@/lib'
+import { icon } from '@/schemas/fields/icon'
 import { defineField } from 'sanity'
 import { headerCtaField } from './headerCtaField'
-import { defineIconField } from '@/schemas/fields'
 
 export const navSectionFooterField = defineField({
   name: 'navSectionFooter',
@@ -32,9 +32,10 @@ export const navSectionFooterField = defineField({
       type: 'string',
       hidden: ({ parent }) => !parent?.hasFooter,
     }),
-    defineIconField({
+    {
+      ...icon,
       hidden: ({ parent }) => !parent?.hasFooter,
-    }),
+    },
     defineField({
       name: 'specialBranding',
       title: 'Special Branding',

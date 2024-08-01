@@ -1,7 +1,7 @@
+import { language } from '@/schemas/fields/language'
 import { CommentIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { blockPreview } from 'sanity-pills'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 
 export const testimonial = defineType({
   name: 'testimonial',
@@ -22,11 +22,15 @@ export const testimonial = defineType({
       to: [{ type: 'person' }, { type: 'company' }],
       // Required if overrideAttribution is false
       validation: (Rule) =>
-        Rule.error().custom((field: any, context: any) => {
-          const { parent } = context
+        Rule.error().custom((field, context) => {
+          const parent = context.parent as
+            | { overrideAttribution: boolean }
+            | undefined
+
           if (!parent?.overrideAttribution && !field) {
             return 'Author is required if you do not override attribution details'
           }
+
           return true
         }),
     }),
@@ -56,7 +60,7 @@ export const testimonial = defineType({
       hidden: ({ parent }) => !parent?.overrideAttribution,
     }),
 
-    defineLanguageField(),
+    language,
   ],
   preview: {
     select: {

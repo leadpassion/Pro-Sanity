@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewStatsPanelProps extends PreviewProps {
@@ -32,7 +32,7 @@ export const PreviewStatsPanel = (props: PreviewStatsPanelProps) => {
               const descriptionString = blockPreview(stat.description)
               return (
                 <Card
-                  key={index}
+                  key={stat.value}
                   padding={3}
                   style={{
                     width: '150px',

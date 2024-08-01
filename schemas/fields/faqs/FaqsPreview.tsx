@@ -1,5 +1,5 @@
 import { Box, Flex, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 type FaqsPreviewProps = PreviewProps & {
@@ -19,8 +19,8 @@ export const FaqsPreview = (props: FaqsPreviewProps) => {
       <Box padding={4}>
         {questions ? (
           <Stack space={4}>
-            {questions.map((question, index) => (
-              <Stack key={index} space={3}>
+            {questions.map((question) => (
+              <Stack key={question.question} space={3}>
                 <details>
                   <summary>
                     {question.question

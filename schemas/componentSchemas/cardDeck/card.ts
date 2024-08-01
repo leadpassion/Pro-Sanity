@@ -1,5 +1,5 @@
-import { defineIconField } from '@/schemas/fields'
-import { defineCtaActionOfType } from '@/schemas/fields/defineCtaActionOfType'
+import { ctaAction } from '@/schemas/fields/ctaAction'
+import { icon } from '@/schemas/fields/icon'
 import { defineField } from 'sanity'
 
 export const card = defineField({
@@ -18,10 +18,11 @@ export const card = defineField({
     },
   ],
   fields: [
-    defineIconField({
+    {
+      ...icon,
       hidden: ({ parent }) => parent.useCustomIcon,
       group: 'content',
-    }),
+    },
     defineField({
       name: 'useCustomIcon',
       title: 'Use Custom Icon?',
@@ -48,12 +49,27 @@ export const card = defineField({
       type: 'simpleRichText',
       group: 'content',
     }),
-    defineCtaActionOfType(['link', 'internalLink', 'playVideo'], {
+    {
+      ...ctaAction,
       name: 'cta',
-      title: 'CTA',
-      initialActionType: undefined,
-      initialButtonStyle: 'purple-link',
       group: 'cta',
-    }),
+      fields: [
+        defineField({
+          name: 'actionType',
+          title: 'CTA Type',
+          type: 'string',
+          initialValue: 'internalLink',
+          options: {
+            list: [
+              { title: 'External Link', value: 'link' },
+              { title: 'Internal Link', value: 'internalLink' },
+              { title: 'Download', value: 'download' },
+              { title: 'Play Video', value: 'playVideo' },
+            ],
+          },
+        }),
+        ...ctaAction.fields,
+      ],
+    },
   ],
 })

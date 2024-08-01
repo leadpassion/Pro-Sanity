@@ -1,5 +1,5 @@
 import { Box, Stack, Text } from '@sanity/ui'
-import { PreviewProps } from 'sanity'
+import type { PreviewProps } from 'sanity'
 
 interface PreviewAccordionProps extends PreviewProps {
   items: {
@@ -20,8 +20,8 @@ export const PreviewAccordion = (props: PreviewAccordionProps) => {
       {items?.length && (
         <Box margin={3} marginTop={2}>
           <Stack space={2}>
-            {items.map((item, index) => (
-              <Text size={1} muted key={index}>
+            {items.map((item) => (
+              <Text size={1} muted key={item.title}>
                 {item.title}
               </Text>
             ))}

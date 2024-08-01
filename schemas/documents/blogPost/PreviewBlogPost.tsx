@@ -1,4 +1,4 @@
-import { PreviewProps } from 'sanity'
+import type { PreviewProps } from 'sanity'
 
 interface PreviewBlogPostProps extends PreviewProps {
   title: string

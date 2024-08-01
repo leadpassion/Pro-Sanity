@@ -1,7 +1,7 @@
 import { studioApiVersion } from '@/lib/api'
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { PreviewProps, useClient } from 'sanity'
+import { type PreviewProps, useClient } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewcaseStudyPanelProps extends PreviewProps {
@@ -64,9 +64,9 @@ export const PreviewCaseStudyPanel = (props: PreviewcaseStudyPanelProps) => {
           {caseStudyTitles?.length > 0 && (
             <div style={{ overflowX: 'scroll' }}>
               <Flex dir="row" gap={2}>
-                {caseStudyTitles.map((title, index) => (
+                {caseStudyTitles.map((title) => (
                   <Card
-                    key={index}
+                    key={`card-${title}`}
                     padding={3}
                     marginBottom={2}
                     border

@@ -1,8 +1,8 @@
-import { PreviewProps, defineField } from 'sanity'
-import { footerNavLink } from './footerNavLink'
-import { footerDivider } from './footerDivider'
-import { footerBadgeRow } from './footerBadgeRow'
 import { Box, Text } from '@sanity/ui'
+import { type PreviewProps, defineField } from 'sanity'
+import { footerBadgeRow } from './footerBadgeRow'
+import { footerDivider } from './footerDivider'
+import { footerNavLink } from './footerNavLink'
 
 type FooterNavLink = {
   _type: 'footerNavLink'
@@ -40,10 +40,11 @@ const PreviewNavColumn = (props: PreviewNavColumnProps) => {
       })}
       <Box margin={3} marginTop={2}>
         {navItems.map((item, index) => {
+          const key = `${item._type}-${index}`
           if (item._type === 'footerNavLink') {
             return (
               <Box
-                key={index}
+                key={key}
                 marginBottom={3}
                 marginTop={item.isHeading && index !== 0 ? 4 : undefined}
               >
@@ -56,7 +57,7 @@ const PreviewNavColumn = (props: PreviewNavColumnProps) => {
 
           if (item._type === 'divider') {
             return (
-              <Box key={index} marginTop={4} marginBottom={3}>
+              <Box key={key} marginTop={4} marginBottom={3}>
                 <hr />
               </Box>
             )
@@ -64,7 +65,7 @@ const PreviewNavColumn = (props: PreviewNavColumnProps) => {
 
           if (item._type === 'footerBadgeRow') {
             return (
-              <Box key={index} marginBottom={2}>
+              <Box key={key} marginBottom={2}>
                 <Text size={1} muted>
                   [Badge Row]
                 </Text>

@@ -1,5 +1,5 @@
 import { Box, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewOverlappingCardsProps extends PreviewProps {
@@ -24,7 +24,7 @@ export const PreviewOverlappingCards = (
         {cards.map((card, index) => {
           const headingString = blockPreview(card.heading?.text)
           return (
-            <Text size={1} key={index} muted>
+            <Text size={1} key={headingString} muted>
               {index + 1}. {headingString || 'Untitled Card'}
             </Text>
           )

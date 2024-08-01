@@ -17,20 +17,20 @@ export const sharedComponentLayoutFields = [
       defineField({
         name: 'top',
         title: 'Top',
-        type: 'string',
+        type: 'number',
         options: {
           list: PADDING_OPTIONS,
         },
-        initialValue: 'lg',
+        initialValue: 64,
       }),
       defineField({
         name: 'bottom',
         title: 'Bottom',
-        type: 'string',
+        type: 'number',
         options: {
           list: PADDING_OPTIONS,
         },
-        initialValue: 'lg',
+        initialValue: 64,
       }),
     ],
   }),
@@ -47,6 +47,72 @@ export const sharedComponentLayoutFields = [
     },
     initialValue: 'dark',
     group: 'layout',
+  }),
+  defineField({
+    name: 'edgeTreatments',
+    title: 'Edge Treatments',
+    description:
+      'Add rounded corners or a slanted edge to the top or bottom of the component.',
+    type: 'object',
+    group: 'layout',
+    options: {
+      collapsible: false,
+      columns: 2,
+    },
+    fields: [
+      defineField({
+        name: 'top',
+        title: 'Top',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'Straight', value: 'straight' },
+            { title: 'Rounded', value: 'rounded' },
+            { title: 'Slanted', value: 'slanted' },
+          ],
+        },
+        initialValue: 'straight',
+      }),
+      defineField({
+        name: 'bottom',
+        title: 'Bottom',
+        type: 'string',
+        options: {
+          list: [
+            { title: 'Straight', value: 'straight' },
+            { title: 'Rounded', value: 'rounded' },
+            { title: 'Slanted', value: 'slanted' },
+          ],
+        },
+        initialValue: 'straight',
+      }),
+    ],
+  }),
+  defineField({
+    name: 'inset',
+    title: 'Inset',
+    description:
+      'If the section is inset it will slightly sit on top of the section above or below it, creating a stylistic overlap of sections.',
+    type: 'object',
+    group: 'layout',
+    options: {
+      collapsible: false,
+      columns: 2,
+    },
+    fields: [
+      defineField({
+        name: 'insetTop',
+        title: 'Top',
+        type: 'boolean',
+        initialValue: false,
+      }),
+      defineField({
+        name: 'insetBottom',
+        title: 'Bottom',
+        type: 'boolean',
+        initialValue: false,
+      }),
+    ],
   }),
   defineField({
     name: 'backgroundIsCustomized',

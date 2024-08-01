@@ -1,7 +1,11 @@
-import { definePageType } from './definePageType'
+import { seo } from '@/schemas/fields/seo'
 import { TbDeviceImacDollar } from 'react-icons/tb'
-export const paidLandingPage = definePageType({
+import { genericPage } from './definePageType'
+
+export const paidLandingPage = {
+  ...genericPage,
   name: 'paidLandingPage',
   title: 'Paid Landing Page',
   icon: TbDeviceImacDollar,
-})
+  fields: [...genericPage.fields, seo],
+}

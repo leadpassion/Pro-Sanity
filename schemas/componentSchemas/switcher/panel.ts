@@ -1,6 +1,6 @@
-import { defineComplexComponentBodyField } from '@/schemas/fields/defineComplexComponentBodyField/defineComplexComponentBodyField'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { defineRichImageField } from '@/schemas/fields/defineRichImageField'
+import { complexComponentBody } from '@/schemas/fields'
+import { heading } from '@/schemas/fields/heading'
+import { richImage } from '@/schemas/fields/richImage'
 import { PanelLeftIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
 
@@ -16,17 +16,21 @@ export const panel = defineField({
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
-    defineHeadingField({
-      defaultHeadingLevel: 'h3',
-      defaultSize: 'display-md',
-    }),
-    defineComplexComponentBodyField({
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h3',
+        headingSize: 'display-md',
+      },
+    },
+    {
+      ...complexComponentBody,
       group: [],
-    }),
-    defineRichImageField({
+    },
+    {
+      ...richImage,
       name: 'image',
-      title: 'Image',
-    }),
+    },
   ],
   preview: {
     select: {

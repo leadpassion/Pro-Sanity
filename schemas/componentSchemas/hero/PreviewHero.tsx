@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 import { hues } from '@sanity/color'
 

@@ -1,8 +1,8 @@
-import { blockPreview } from 'sanity-pills'
-import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject, useClient } from 'sanity'
-import { useEffect, useState } from 'react'
 import { studioApiVersion } from '@/lib/api'
+import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
+import { useEffect, useState } from 'react'
+import { type PreviewProps, type TypedObject, useClient } from 'sanity'
+import { blockPreview } from 'sanity-pills'
 
 interface PreviewConversionPanelProps extends PreviewProps {
   heading: {
@@ -78,11 +78,9 @@ export const PreviewConversionPanel = (props: PreviewConversionPanelProps) => {
             )}
             {ctaLabels && (
               <Flex dir="row" gap={3}>
-                {ctaLabels.map((label, index) => (
-                  <Card key={index} padding={2} radius="full" border>
-                    <Text key={index} size={1}>
-                      {label}
-                    </Text>
+                {ctaLabels.map((label) => (
+                  <Card key={label} padding={2} radius="full" border>
+                    <Text size={1}>{label}</Text>
                   </Card>
                 ))}
               </Flex>
@@ -91,9 +89,9 @@ export const PreviewConversionPanel = (props: PreviewConversionPanelProps) => {
               <div>
                 <div style={{ overflowX: 'scroll' }}>
                   <Flex dir="row" gap={3}>
-                    {ctasBottom?.map((cta, index) => (
+                    {ctasBottom?.map((cta) => (
                       <Card
-                        key={index}
+                        key={cta.title}
                         padding={3}
                         border
                         flex={1}

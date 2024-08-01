@@ -1,7 +1,7 @@
+import { language } from '@/schemas/fields/language'
+import { UserIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { brazeLeader } from './brazeLeader'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { UserIcon } from '@sanity/icons'
 
 export const brazeLeadership = defineType({
   name: 'brazeLeadership',
@@ -23,7 +23,7 @@ export const brazeLeadership = defineType({
       type: 'string',
       // hidden: true,
     }),
-    defineLanguageField(),
+    language,
   ],
   preview: {
     select: {

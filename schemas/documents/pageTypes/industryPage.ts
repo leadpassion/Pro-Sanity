@@ -1,8 +1,18 @@
-import { definePageType } from './definePageType'
+import { seo } from '@/schemas/fields/seo'
+import { genericPage } from './definePageType'
 
-export const industryPage = definePageType({
+export const industryPage = {
+  ...genericPage,
   name: 'industryPage',
   title: 'Industry Page',
-  slugPrefix: 'solutions',
-  includeSlugPrefixInStoredValue: true,
-})
+  fields: [
+    ...genericPage.fields,
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'solutions',
+        includeSlugPrefixInStoredValue: true,
+      },
+    },
+  ],
+}

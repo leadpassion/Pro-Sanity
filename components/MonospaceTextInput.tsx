@@ -1,6 +1,6 @@
 import { TextArea } from '@sanity/ui'
-import { FormEvent, useCallback, useEffect, useState } from 'react'
-import { TextInputProps, set, unset } from 'sanity'
+import { type FormEvent, useCallback, useEffect, useState } from 'react'
+import { type TextInputProps, set, unset } from 'sanity'
 
 export const MonospaceTextInput = (props: TextInputProps) => {
   const { value, onChange } = props

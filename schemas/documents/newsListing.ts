@@ -2,9 +2,9 @@
 // News Listing (document)
 // ----------------------------------
 
+import { language } from '@/schemas/fields/language'
 import { EditIcon, LinkIcon, WrenchIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 
 export const newsListing = defineType({
   name: 'newsListing',
@@ -64,8 +64,9 @@ export const newsListing = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
 })

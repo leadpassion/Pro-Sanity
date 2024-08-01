@@ -1,14 +1,14 @@
 import { Inline, Stack, Switch, Text, TextArea } from '@sanity/ui'
-import { FormEvent, useCallback, useEffect, useState } from 'react'
+import { type FormEvent, useCallback, useEffect, useState } from 'react'
 import {
   ArrayOfObjectsInput,
-  ArrayOfObjectsInputProps,
+  type ArrayOfObjectsInputProps,
   set,
   unset,
   useCurrentUser,
 } from 'sanity'
 
-const stringify = (value: any) => JSON.stringify(value, null, 2)
+const stringify = (value: unknown) => JSON.stringify(value, null, 2)
 
 const tryParse = (value: string): unknown => {
   try {

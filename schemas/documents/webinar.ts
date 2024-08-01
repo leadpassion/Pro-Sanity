@@ -5,22 +5,21 @@
 //
 // –------------------------------------------------
 
+import { categories } from '@/schemas/fields/categories'
+import { simpleEmbeddedForm } from '@/schemas/fields/embeddedForm/simpleEmbeddedForm'
+import { language } from '@/schemas/fields/language'
+import { pageBody } from '@/schemas/fields/pageBody'
+import { seo } from '@/schemas/fields/seo'
+import { timezone } from '@/schemas/fields/timezone'
 import {
   DocumentVideoIcon,
   EditIcon,
   HashIcon,
-  HeartIcon,
   TagIcon,
   WrenchIcon,
 } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { defineEmbeddedFormField } from '../fields/defineEmbeddedFormField'
 import { TbForms } from 'react-icons/tb'
-import { defineCategoriesField } from '../fields/defineCategoriesField'
-import { defineTimezoneField } from '../fields/defineTimezoneField'
-import { definePageBodyField } from '../fields'
+import { defineField, defineType } from 'sanity'
 
 export const webinar = defineType({
   name: 'webinar',
@@ -84,10 +83,11 @@ export const webinar = defineType({
       group: 'content',
       fieldset: 'datetime',
     }),
-    defineTimezoneField({
+    {
+      ...timezone,
       group: 'content',
       fieldset: 'datetime',
-    }),
+    },
     defineField({
       name: 'description',
       title: 'Description',
@@ -110,26 +110,28 @@ export const webinar = defineType({
       of: [{ type: 'reference', to: [{ type: 'person' }] }],
       group: 'content',
     }),
-    definePageBodyField(),
-    defineEmbeddedFormField({
+    pageBody,
+    {
+      ...simpleEmbeddedForm,
       group: 'form',
-    }),
-    definePageBodyField({
+    },
+    {
+      ...pageBody,
       name: 'thankYouPageBody',
       title: 'Thank You Page Body',
       group: 'form',
       hidden: ({ parent }) => {
         return !parent?.embeddedForm?.submitBehavior?.includes('thankYouPage')
       },
-    }),
-    defineCategoriesField(),
-    defineSeoField({
-      name: 'seo',
-      title: 'SEO Settings',
-      group: 'seo',
-      slugPrefix: 'resources/webinars-and-events',
-      includeSlugPrefixInStoredValue: false,
-    }),
+    },
+    categories,
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'resources/webinars-and-events',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
 
     // SETTINGS
     defineField({
@@ -147,8 +149,9 @@ export const webinar = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
 })

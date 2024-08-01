@@ -1,4 +1,5 @@
-import { defineInternalLinkField, defineLinkField } from '@/schemas/fields'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
 import { LinkIcon } from '@sanity/icons'
 import { FaHeading } from 'react-icons/fa'
 import { defineField } from 'sanity'
@@ -34,12 +35,14 @@ export const footerNavLink = defineField({
       type: 'boolean',
       initialValue: false,
     }),
-    defineLinkField({
+    {
+      ...link,
       hidden: ({ parent }) => parent?.type !== 'link',
-    }),
-    defineInternalLinkField({
+    },
+    {
+      ...internalLink,
       hidden: ({ parent }) => parent?.type !== 'internalLink',
-    }),
+    },
   ],
   preview: {
     select: {

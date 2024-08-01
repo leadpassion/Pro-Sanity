@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewHeadingBlockProps extends PreviewProps {
@@ -48,8 +48,13 @@ export const PreviewHeadingBlock = (props: PreviewHeadingBlockProps) => {
           )}
           {ctas && ctas.length > 0 && (
             <Flex direction="row" gap={2}>
-              {ctas?.map((cta, index) => (
-                <Card key={`cta-${index}`} radius="full" border padding={2}>
+              {ctas?.map((cta) => (
+                <Card
+                  key={`cta-${cta.buttonText}`}
+                  radius="full"
+                  border
+                  padding={2}
+                >
                   <Text size={0}>{cta.buttonText}</Text>
                 </Card>
               ))}

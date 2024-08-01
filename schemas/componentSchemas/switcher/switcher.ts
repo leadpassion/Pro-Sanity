@@ -1,7 +1,7 @@
+import { heading } from '@/schemas/fields/heading'
 import { BsLayoutSidebarReverse } from 'react-icons/bs'
-import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
 import { defineField } from 'sanity'
+import { definePageComponent } from '../definePageComponent'
 import { panel } from './panel'
 
 export const switcher = definePageComponent({
@@ -10,7 +10,7 @@ export const switcher = definePageComponent({
   description: 'A tabbed collection of panels',
   icon: BsLayoutSidebarReverse,
   fields: [
-    defineHeadingField({}),
+    heading,
     defineField({
       name: 'subheading',
       title: 'Subheading',

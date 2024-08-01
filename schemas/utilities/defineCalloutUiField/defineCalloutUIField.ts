@@ -1,4 +1,4 @@
-import { ConditionalProperty } from 'sanity'
+import type { ConditionalProperty } from 'sanity'
 import { CalloutUiForm } from './CalloutUiForm'
 
 interface CalloutUiOptions {

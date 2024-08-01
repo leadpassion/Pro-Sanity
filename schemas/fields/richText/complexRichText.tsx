@@ -5,14 +5,15 @@
 //
 // –------------------------------------------------
 
+import { anchor } from '@/schemas/fields/anchor'
+import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
+import { ctaCard } from '@/schemas/fields/ctaCard'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
+import { richImage } from '@/schemas/fields/richImage'
+import { tokenReference } from '@/schemas/fields/tokenReference'
 import { GoHorizontalRule } from 'react-icons/go'
 import { defineArrayMember, defineType } from 'sanity'
-import { defineCtaBarField } from '../defineComplexComponentBodyField/ctaBar/defineCtaBarField'
-import { defineRichImageField } from '../defineRichImageField'
-import { defineInternalLinkField, defineLinkField } from '../linkTypes'
-import { defineAnchorField } from '../defineAnchorField'
-import { defineCtaCardField } from '../defineCtaCardField'
-import { defineTokenReferenceField } from '../defineTokenReferenceField'
 
 export const complexRichText = defineType({
   name: 'complexRichText',
@@ -22,7 +23,7 @@ export const complexRichText = defineType({
     defineArrayMember({
       type: 'block',
       // These blocks can be added inline with text in the editor
-      of: [defineTokenReferenceField()],
+      of: [tokenReference],
       // This config limits the styles that can be applied to text in the editor
       // Specifically, this removes the default H1 option to avoid conflict
       // with the blog post title.
@@ -36,12 +37,12 @@ export const complexRichText = defineType({
         { title: 'Quote', value: 'blockquote' },
       ],
       marks: {
-        annotations: [defineLinkField(), defineInternalLinkField()],
+        annotations: [link, internalLink],
       },
     }),
-    defineRichImageField(),
-    defineCtaCardField(),
-    defineCtaBarField(),
+    richImage,
+    ctaCard,
+    ctaBar,
     defineArrayMember({
       name: 'testimonialReference',
       title: 'Testimonial',
@@ -54,7 +55,7 @@ export const complexRichText = defineType({
       type: 'reference',
       to: [{ type: 'video' }],
     }),
-    defineAnchorField(),
+    anchor,
     defineArrayMember({
       name: 'hr',
       title: 'Horizontal Rule',

@@ -1,9 +1,9 @@
+import { ctaCard } from '@/schemas/componentSchemas/conversionPanel/ctaCard'
 import { definePageComponent } from '@/schemas/componentSchemas/definePageComponent'
+import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
+import { heading } from '@/schemas/fields/heading'
 import { ArrowRightIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { defineCtaBarField } from '@/schemas/fields/defineComplexComponentBodyField/ctaBar/defineCtaBarField'
-import { ctaCard } from '@/schemas/componentSchemas/conversionPanel/ctaCard'
 import { PreviewConversionPanel } from './PreviewConversionPanel'
 
 export const conversionPanel = definePageComponent({
@@ -12,21 +12,27 @@ export const conversionPanel = definePageComponent({
   description: 'A panel featuring one or more CTAs.',
   icon: ArrowRightIcon,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'subheading',
       type: 'text',
       rows: 3,
     }),
-    defineCtaBarField({
-      allowedCtaTypes: ['link', 'internalLink', 'download', 'emailCapture'],
+    {
+      ...ctaBar,
       description:
         'These CTAs will be displayed below the subheading and above the CTA cards.',
-    }),
+      options: {
+        allowedCtaTypes: ['link', 'internalLink', 'download', 'emailCapture'],
+      },
+    },
     defineField({
       name: 'ctaCards',
       title: 'CTA Cards',

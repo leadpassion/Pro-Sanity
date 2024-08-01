@@ -1,7 +1,12 @@
 import { studioApiVersion } from '@/lib'
 import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { PreviewProps, SanityClient, TypedObject, useClient } from 'sanity'
+import {
+  type PreviewProps,
+  type SanityClient,
+  type TypedObject,
+  useClient,
+} from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewTestimonialPanelProps extends PreviewProps {
@@ -30,7 +35,7 @@ const fetchAuthorName = async (
 ) => {
   if (!authorRef) return undefined
 
-  const author = await client.fetch(`*[_id == $authorRef][0]`, {
+  const author = await client.fetch('*[_id == $authorRef][0]', {
     authorRef,
   })
 
@@ -47,7 +52,7 @@ const fetchTestimonialPayloads = async (
   const testimonialPayloads = await Promise.all(
     testimonialRefs.map(async (ref) => {
       const testimonial = await client.fetch<TestimonialPayload>(
-        `*[_id == $ref][0]`,
+        '*[_id == $ref][0]',
         {
           ref,
         },
@@ -119,14 +124,14 @@ export const PreviewTestimonialPanel = (
               style={{ overflowX: 'scroll' }}
             >
               <Flex direction="row" gap={4}>
-                {testimonialPayloads?.map((testimonial, index) => {
+                {testimonialPayloads?.map((testimonial) => {
                   if (!testimonial) return undefined
 
                   const bodyString = blockPreview(testimonial.body)
 
                   return (
                     <Card
-                      key={index}
+                      key={bodyString}
                       padding={4}
                       border
                       style={{ width: '150px', minWidth: '225px' }}

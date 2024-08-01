@@ -1,9 +1,9 @@
+import { heading } from '@/schemas/fields/heading'
 import { DashboardIcon } from '@sanity/icons'
-import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
 import { defineField } from 'sanity'
-import { bentoContentCard } from './bentoContentCard'
+import { definePageComponent } from '../definePageComponent'
 import { PreviewBentoBox } from './PreviewBentoBox'
+import { bentoContentCard } from './bentoContentCard'
 
 export const bentoBox = definePageComponent({
   name: 'bentoBox',
@@ -11,10 +11,13 @@ export const bentoBox = definePageComponent({
   description: 'A stylized collection of content links, images, and callouts.',
   icon: DashboardIcon,
   fields: [
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',

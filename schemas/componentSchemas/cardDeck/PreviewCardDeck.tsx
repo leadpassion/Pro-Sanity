@@ -1,5 +1,5 @@
 import { Box, Card, Flex, Text } from '@sanity/ui'
-import { PreviewProps, TypedObject } from 'sanity'
+import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
 interface PreviewCardDeckProps extends PreviewProps {
@@ -27,7 +27,7 @@ export const PreviewCardDeck = (props: PreviewCardDeckProps) => {
       {renderDefault(props)}
       <Box margin={3} marginTop={0} padding={3} style={{ overflowX: 'scroll' }}>
         <Flex gap={4}>
-          {cards.map((card, index) => {
+          {cards.map((card) => {
             const cardBodyString = blockPreview(card.body)
             const ctaButtonText =
               card.cta?.buttonText && card.cta.actionType
@@ -35,7 +35,7 @@ export const PreviewCardDeck = (props: PreviewCardDeckProps) => {
                 : undefined
             return (
               <Card
-                key={index}
+                key={card.heading}
                 padding={4}
                 style={{ minWidth: '175px', width: '175px' }}
                 border

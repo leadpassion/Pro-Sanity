@@ -1,16 +1,14 @@
 import { BUTTON_SIZES, BUTTON_STYLES } from '@/lib'
+import { icon } from '@/schemas/fields/icon'
+import { language } from '@/schemas/fields/language'
+import { downloadLink } from '@/schemas/fields/linkTypes/downloadLink'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
+import { defineCalloutUIField } from '@/schemas/utilities'
 import { convertCamelCaseToTitleCase } from '@/utils'
 import { RxButton } from 'react-icons/rx'
 import { defineField, defineType } from 'sanity'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import {
-  defineDownloadLinkField,
-  defineIconField,
-  defineInternalLinkField,
-  defineLinkField,
-} from '@/schemas/fields'
 import { PreviewReusableContent } from './PreviewReusableContent'
-import { defineCalloutUIField } from '@/schemas/utilities'
 
 export const cta = defineType({
   name: 'cta',
@@ -76,7 +74,7 @@ export const cta = defineType({
       initialValue: 'lg',
       hidden: ({ parent }) => !parent?.type,
     }),
-    defineIconField(),
+    icon,
     defineField({
       name: 'iconPosition',
       title: 'Icon Position',
@@ -90,30 +88,34 @@ export const cta = defineType({
 
     // ACTION TYPES
     // Link
-    defineLinkField({
+    {
+      ...link,
       hidden: ({ parent }) => parent?.type !== 'link',
-    }),
+    },
 
     // Internal Link
-    defineInternalLinkField({
+    {
+      ...internalLink,
       hidden: ({ parent }) => parent?.type !== 'internalLink',
-    }),
+    },
 
     // Download
-    defineDownloadLinkField({
+    {
+      ...downloadLink,
       hidden: ({ parent }) => parent?.type !== 'download',
-    }),
+    },
 
     // Email Capture
     defineField({
-      name: 'hubspotForm',
-      title: 'HubSpot Form',
+      name: 'marketoForm',
+      title: 'Marketo Form',
       type: 'reference',
-      to: [{ type: 'hubspotForm' }],
-      hidden: ({ parent }) => parent?.type !== 'emailCapture' && parent?.type !== 'popup',
+      to: [{ type: 'marketoForm' }],
+      hidden: ({ parent }) =>
+        parent?.type !== 'emailCapture' && parent?.type !== 'popup',
     }),
 
-    defineLanguageField(),
+    language,
   ],
   preview: {
     select: {

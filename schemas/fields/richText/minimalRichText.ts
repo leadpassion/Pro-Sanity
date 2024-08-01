@@ -6,8 +6,8 @@
 //
 // –------------------------------------------------
 
+import { tokenReference } from '@/schemas/fields/tokenReference'
 import { defineArrayMember, defineType } from 'sanity'
-import { defineTokenReferenceField } from '../defineTokenReferenceField'
 
 export const minimalRichText = defineType({
   name: 'minimalRichText',
@@ -16,7 +16,7 @@ export const minimalRichText = defineType({
   of: [
     defineArrayMember({
       type: 'block',
-      of: [defineTokenReferenceField()],
+      of: [tokenReference],
       styles: [],
       lists: [],
       marks: {

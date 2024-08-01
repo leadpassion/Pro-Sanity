@@ -7,9 +7,9 @@
 //
 // –------------------------------------------------
 
+import { logo } from '@/schemas/fields/logo'
 import { CaseIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineLogoField } from '../fields/defineLogoField'
 
 export const company = defineType({
   name: 'company',
@@ -61,16 +61,18 @@ export const company = defineType({
       type: 'string',
       group: 'details',
     }),
-    defineLogoField({
+    {
+      ...logo,
       name: 'logotype',
       title: 'Logotype',
       group: 'details',
-    }),
-    defineLogoField({
+    },
+    {
+      ...logo,
       name: 'icon',
       title: 'Icon',
       group: 'details',
-    }),
+    },
     defineField({
       name: 'isAwardGiver',
       title: 'Is an Award Giver?',

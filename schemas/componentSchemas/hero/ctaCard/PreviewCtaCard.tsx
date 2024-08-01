@@ -1,6 +1,6 @@
 import { ChevronRightIcon } from '@sanity/icons'
 import { Box, Card, Flex, Text } from '@sanity/ui'
-import { PreviewProps } from 'sanity'
+import type { PreviewProps } from 'sanity'
 
 interface PreviewCtaCardProps extends PreviewProps {
   leadInText: string

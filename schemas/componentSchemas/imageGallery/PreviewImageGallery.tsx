@@ -1,7 +1,7 @@
 import { studioApiVersion } from '@/lib/api'
 import { Box, Card, Flex } from '@sanity/ui'
 import { useEffect, useState } from 'react'
-import { PreviewProps, useClient } from 'sanity'
+import { type PreviewProps, useClient } from 'sanity'
 
 interface PreviewImageGalleryProps extends PreviewProps {
   type: 'single' | 'gallery'
@@ -41,9 +41,9 @@ export const PreviewImageGallery = (props: PreviewImageGalleryProps) => {
       {galleryImageUrls?.length > 0 && (
         <div style={{ overflowX: 'scroll' }}>
           <Flex dir="row" gap={2}>
-            {galleryImageUrls.map((url, index) => (
+            {galleryImageUrls.map((url) => (
               <Card
-                key={index}
+                key={url}
                 margin={3}
                 marginTop={2}
                 flex={1}
@@ -59,7 +59,7 @@ export const PreviewImageGallery = (props: PreviewImageGalleryProps) => {
                   backgroundPosition: 'center',
                 }}
                 border
-              ></Card>
+              />
             ))}
           </Flex>
         </div>

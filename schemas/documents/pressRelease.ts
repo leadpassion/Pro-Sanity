@@ -5,6 +5,11 @@
 //
 // –------------------------------------------------
 
+import { categories } from '@/schemas/fields/categories'
+import { language } from '@/schemas/fields/language'
+import { publicationDates } from '@/schemas/fields/publicationDates'
+import { richImage } from '@/schemas/fields/richImage'
+import { seo } from '@/schemas/fields/seo'
 import {
   ConfettiIcon,
   EditIcon,
@@ -13,11 +18,6 @@ import {
   WrenchIcon,
 } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineSeoField } from '../fields/defineSeoField'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { defineCategoriesField } from '../fields/defineCategoriesField'
-import { definePublicationDatesField } from '../fields/definePublicationDatesField'
-import { defineRichImageField } from '../fields/defineRichImageField'
 
 export const pressRelease = defineType({
   name: 'pressRelease',
@@ -86,17 +86,21 @@ export const pressRelease = defineType({
       ],
       group: 'content',
     }),
-    defineRichImageField({
+    {
+      ...richImage,
       name: 'featuredImage',
       title: 'Featured Image',
       group: 'content',
-    }),
-    definePublicationDatesField(),
-    defineCategoriesField(),
-    defineSeoField({
-      slugPrefix: 'company/news',
-      includeSlugPrefixInStoredValue: false,
-    }),
+    },
+    publicationDates,
+    categories,
+    {
+      ...seo,
+      options: {
+        slugPrefix: 'company/news',
+        includeSlugPrefixInStoredValue: false,
+      },
+    },
 
     // SETTINGS
     defineField({
@@ -116,8 +120,9 @@ export const pressRelease = defineType({
       type: 'string',
       group: 'settings',
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'settings',
-    }),
+    },
   ],
 })

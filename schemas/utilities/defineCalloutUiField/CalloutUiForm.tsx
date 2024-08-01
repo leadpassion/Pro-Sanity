@@ -1,4 +1,4 @@
-import { StringInputProps } from 'sanity'
+import type { StringInputProps } from 'sanity'
 import { Card, Heading, Stack, Text, useTheme_v2 } from '@sanity/ui'
 import { namedColors } from '@/lib'
 

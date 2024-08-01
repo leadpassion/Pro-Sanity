@@ -1,11 +1,11 @@
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
+import { heading } from '@/schemas/fields/heading'
+import { language } from '@/schemas/fields/language'
 import { ControlsIcon } from '@sanity/icons'
 import { PiSquareHalfBottomDuotone } from 'react-icons/pi'
-import { defineField, defineType } from 'sanity'
-import { navColumn } from './navColumn'
-import { footerNavLink } from './footerNavLink'
 import { TbAlignBoxLeftTop, TbBoxAlignBottom, TbColumns3 } from 'react-icons/tb'
-import { defineLanguageField } from '@/schemas/fields'
+import { defineField, defineType } from 'sanity'
+import { footerNavLink } from './footerNavLink'
+import { navColumn } from './navColumn'
 
 export const footer = defineType({
   name: 'footer',
@@ -44,11 +44,14 @@ export const footer = defineType({
   ],
   fields: [
     // HEADING & SOCIAL LINKS
-    defineHeadingField({
+    {
+      ...heading,
       group: 'headingAndSocial',
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'instagramLink',
       title: 'Instagram',
@@ -97,7 +100,10 @@ export const footer = defineType({
       group: 'settings',
       hidden: true,
     }),
-    defineLanguageField({ group: 'settings' }),
+    {
+      ...language,
+      group: 'settings',
+    },
   ],
   preview: {
     select: {

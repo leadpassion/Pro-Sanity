@@ -1,8 +1,8 @@
+import { ctaAction } from '@/schemas/fields/ctaAction'
+import { richImage } from '@/schemas/fields/richImage'
 import { DownloadIcon } from '@sanity/icons'
-import { definePageComponent } from '../definePageComponent'
 import { defineField } from 'sanity'
-import { defineRichImageField } from '@/schemas/fields/defineRichImageField'
-import { defineCtaActionOfType } from '@/schemas/fields/defineCtaActionOfType'
+import { definePageComponent } from '../definePageComponent'
 
 export const downloadPanel = definePageComponent({
   name: 'downloadPanel',
@@ -32,12 +32,13 @@ export const downloadPanel = definePageComponent({
       description:
         'A description of or quote from the resource being offered for download.',
     }),
-    defineRichImageField({
+    {
+      ...richImage,
       name: 'featuredImage',
       title: 'Featured Image',
       description: 'The image that will be displayed in the panel.',
       group: ['media'],
-    }),
+    },
     defineField({
       name: 'mediaSide',
       title: 'Media Side',
@@ -66,9 +67,27 @@ export const downloadPanel = definePageComponent({
         'If set, the default CTA will be replaced with a custom one.',
       type: 'boolean',
     }),
-    defineCtaActionOfType(['download', 'internalLink', 'link'], {
+    {
+      ...ctaAction,
       hidden: ({ parent }) => !parent?.customCta,
-    }),
+      fields: [
+        defineField({
+          name: 'actionType',
+          title: 'CTA Type',
+          type: 'string',
+          initialValue: 'internalLink',
+          options: {
+            list: [
+              { title: 'External Link', value: 'link' },
+              { title: 'Internal Link', value: 'internalLink' },
+              { title: 'Download', value: 'download' },
+              { title: 'Play Video', value: 'playVideo' },
+            ],
+          },
+        }),
+        ...ctaAction.fields,
+      ],
+    },
   ],
   preview: {
     select: {

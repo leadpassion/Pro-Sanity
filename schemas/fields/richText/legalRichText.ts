@@ -1,13 +1,11 @@
+import { anchor } from '@/schemas/fields/anchor'
+import { faqs } from '@/schemas/fields/faqs'
+import { downloadLink } from '@/schemas/fields/linkTypes/downloadLink'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
 import { DocumentPdfIcon } from '@sanity/icons'
-import { SiHubspot } from 'react-icons/si'
+import { SiMarketo } from 'react-icons/si'
 import { defineArrayMember, defineType } from 'sanity'
-import {
-  defineLinkField,
-  defineInternalLinkField,
-  defineDownloadLinkField,
-  defineAnchorField,
-} from '@/schemas/fields'
-import { defineFaqsField } from '../faqs/defineFaqsField'
 
 export const legalRichText = defineType({
   name: 'legalRichText',
@@ -47,15 +45,11 @@ export const legalRichText = defineType({
             value: 'code',
           },
         ],
-        annotations: [
-          defineLinkField(),
-          defineInternalLinkField(),
-          defineDownloadLinkField(),
-        ],
+        annotations: [link, internalLink, downloadLink],
       },
     }),
-    defineFaqsField(),
-    defineAnchorField(),
+    faqs,
+    anchor,
     defineArrayMember({
       name: 'pdf',
       title: 'PDF Embed',
@@ -67,8 +61,8 @@ export const legalRichText = defineType({
     }),
     defineArrayMember({
       type: 'reference',
-      to: [{ type: 'hubspotForm' }],
-      icon: SiHubspot,
+      to: [{ type: 'marketoForm' }],
+      icon: SiMarketo,
     }),
   ],
 })

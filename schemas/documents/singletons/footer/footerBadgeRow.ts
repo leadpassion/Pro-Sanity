@@ -1,4 +1,4 @@
-import { defineRichImageField } from '@/schemas/fields/defineRichImageField'
+import { richImage } from '@/schemas/fields/richImage'
 import { defineField } from 'sanity'
 
 export const footerBadgeRow = defineField({
@@ -10,7 +10,7 @@ export const footerBadgeRow = defineField({
       name: 'badges',
       title: 'Badges',
       type: 'array',
-      of: [defineRichImageField()],
+      of: [richImage],
     }),
   ],
   preview: {

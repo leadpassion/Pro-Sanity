@@ -1,5 +1,5 @@
 import { BUTTON_STYLES } from '@/lib'
-import { defineIconField } from '@/schemas/fields'
+import { icon } from '@/schemas/fields/icon'
 import { defineField } from 'sanity'
 
 export const headerCtaField = defineField({
@@ -43,8 +43,9 @@ export const headerCtaField = defineField({
       initialValue: 'primary',
       group: 'style',
     }),
-    defineIconField({
+    {
+      ...icon,
       group: 'style',
-    }),
+    },
   ],
 })

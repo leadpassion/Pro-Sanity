@@ -6,9 +6,9 @@
 //
 // –------------------------------------------------
 
+import { language } from '@/schemas/fields/language'
 import { EditIcon, LinkIcon, UserIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
 
 export const person = defineType({
   name: 'person',
@@ -92,9 +92,10 @@ export const person = defineType({
         hotspot: true,
       },
     }),
-    defineLanguageField({
+    {
+      ...language,
       group: 'basics',
-    }),
+    },
 
     // Social media URLs
     defineField({

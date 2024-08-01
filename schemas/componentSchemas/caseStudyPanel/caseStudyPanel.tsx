@@ -1,10 +1,10 @@
+import { ctaField } from '@/schemas/fields/ctaField'
+import { heading } from '@/schemas/fields/heading'
+import { InlineElementIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
 import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { InlineElementIcon } from '@sanity/icons'
-import { caseStudyField } from './caseStudyEntry'
 import { PreviewCaseStudyPanel } from './PreviewCaseStudyPanel'
-import { defineCtaField } from '@/schemas/fields'
+import { caseStudyField } from './caseStudyEntry'
 
 export const caseStudyPanel = definePageComponent({
   name: 'caseStudyPanel',
@@ -27,10 +27,13 @@ export const caseStudyPanel = definePageComponent({
       },
       initialValue: 'switcher',
     }),
-    defineHeadingField({
-      defaultHeadingLevel: 'h2',
-      defaultSize: 'display-lg',
-    }),
+    {
+      ...heading,
+      initialValue: {
+        headingLevel: 'h2',
+        headingSize: 'display-lg',
+      },
+    },
     defineField({
       name: 'subheading',
       title: 'Subheading',
@@ -42,9 +45,10 @@ export const caseStudyPanel = definePageComponent({
       name: 'cta',
       type: 'array',
       of: [
-        defineCtaField({
+        {
+          ...ctaField,
           name: 'localCta',
-        }),
+        },
         defineField({
           title: 'Shared CTA',
           name: 'reference',
@@ -74,8 +78,8 @@ export const caseStudyPanel = definePageComponent({
       validation: (Rule) => [
         // Bento style only supports up to 3 case studies
         Rule.custom((value, context) => {
-          const caseStudies = value as any[] | undefined
-          const parent = context.parent as any | undefined
+          const caseStudies = value as unknown[] | undefined
+          const parent = context.parent as { style: string } | undefined
 
           if (
             parent?.style === 'bento' &&
@@ -90,13 +94,17 @@ export const caseStudyPanel = definePageComponent({
 
         // The panel can only have up to 2 metrics
         Rule.custom((value, context) => {
-          const parent = context.parent || (undefined as any | undefined)
-          const caseStudies = value as any[] | undefined
-          const countOfMetrics = caseStudies?.reduce(
-            (acc, caseStudy) => acc + (caseStudy.metrics || []).length,
-            0,
-          )
-          const isBentoStyle = parent?.style == 'bento'
+          const parent = (context.parent as { style: string }) || undefined
+
+          const caseStudies = value as { metrics: unknown[] }[] | undefined
+
+          const countOfMetrics =
+            caseStudies?.reduce(
+              (acc, caseStudy) => acc + (caseStudy.metrics || []).length,
+              0,
+            ) || 0
+
+          const isBentoStyle = parent?.style === 'bento'
 
           if (isBentoStyle && countOfMetrics > 2) {
             return `In bento mode, the panel can only have up to 2 metrics. Currently, the panel has ${countOfMetrics}. Please remove ${countOfMetrics - 2}.`

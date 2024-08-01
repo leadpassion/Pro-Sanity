@@ -1,8 +1,9 @@
+import { heading } from '@/schemas/fields/heading'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
+import { HashIcon } from '@sanity/icons'
 import { defineField } from 'sanity'
 import { definePageComponent } from '../definePageComponent'
-import { defineHeadingField } from '@/schemas/fields/defineHeadingField'
-import { HashIcon } from '@sanity/icons'
-import { defineInternalLinkField, defineLinkField } from '@/schemas/fields'
 
 export const floatingLinks = definePageComponent({
   name: 'floatingLinks',
@@ -11,7 +12,7 @@ export const floatingLinks = definePageComponent({
   description:
     'A component that presents a list of pills that the user can click on.',
   fields: [
-    defineHeadingField(),
+    heading,
     defineField({
       name: 'subheading',
       title: 'Subheading',
@@ -45,12 +46,14 @@ export const floatingLinks = definePageComponent({
                 ],
               },
             }),
-            defineInternalLinkField({
+            {
+              ...internalLink,
               hidden: ({ parent }) => parent?.type !== 'internal',
-            }),
-            defineLinkField({
+            },
+            {
+              ...link,
               hidden: ({ parent }) => parent?.type !== 'external',
-            }),
+            },
           ],
         },
       ],

@@ -33,7 +33,7 @@ export const navItemListField = defineField({
     prepare({ heading, items }) {
       const title = heading || '[headingless list]'
       const subtitle = items?.length
-        ? items.map((item: any) => item.title).join(', ')
+        ? items.map((item: { title: string }) => item.title).join(', ')
         : 'No items'
       return {
         title,
