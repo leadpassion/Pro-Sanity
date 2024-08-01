@@ -170,7 +170,7 @@ const guidesAndReportsMenu = (S: StructureBuilder) =>
     .icon(IoAnalytics)
     .child(
       S.list()
-        .title('Guides & Reports')
+        .title('Downloads')
         .items([
           S.documentTypeListItem('guide').title('Guides'),
           S.documentTypeListItem('report').title('Reports'),
