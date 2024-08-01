@@ -76,7 +76,6 @@ const mainSitePagesMenu = (S: StructureBuilder) =>
       S.list()
         .title('Main Site Pages')
         .items([
-          S.documentTypeListItem('productPage').title('Products'),
           solutionsMenu(S),
           S.divider(),
           // reference singleton document:
