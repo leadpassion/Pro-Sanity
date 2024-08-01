@@ -6,8 +6,6 @@ export const LANG_CODE_FIELD_NAME = 'language'
 
 export const supportedLanguages = [
   { id: 'en-us', title: 'English' },
-  { id: 'ja', title: 'Japanese' },
-  { id: 'ko', title: 'Korean' },
 ]
 
 export const supportedLanguageCodes = supportedLanguages.map((lang) => lang.id)
