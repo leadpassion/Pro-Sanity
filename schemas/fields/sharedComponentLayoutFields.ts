@@ -30,7 +30,7 @@ export const sharedComponentLayoutFields = [
         options: {
           list: PADDING_OPTIONS,
         },
-        initialValue: 'md',
+        initialValue: 'lg',
       }),
     ],
   }),
