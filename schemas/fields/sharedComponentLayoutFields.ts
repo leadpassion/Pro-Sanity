@@ -49,32 +49,6 @@ export const sharedComponentLayoutFields = [
     group: 'layout',
   }),
   defineField({
-    name: 'inset',
-    title: 'Inset',
-    description:
-      'If the section is inset it will slightly sit on top of the section above or below it, creating a stylistic overlap of sections.',
-    type: 'object',
-    group: 'layout',
-    options: {
-      collapsible: false,
-      columns: 2,
-    },
-    fields: [
-      defineField({
-        name: 'insetTop',
-        title: 'Top',
-        type: 'boolean',
-        initialValue: false,
-      }),
-      defineField({
-        name: 'insetBottom',
-        title: 'Bottom',
-        type: 'boolean',
-        initialValue: false,
-      }),
-    ],
-  }),
-  defineField({
     name: 'backgroundIsCustomized',
     title: 'Customize Background?',
     type: 'boolean',
