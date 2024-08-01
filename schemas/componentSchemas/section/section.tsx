@@ -18,6 +18,7 @@ import { embed } from '../embed'
 import { floatingLinks } from '../floatingLinks'
 import { headingBlock } from '../headingBlock'
 import { hero } from '../hero'
+import { heroMarquee } from '../heroMarquee'
 import { imageGallery } from '../imageGallery'
 import { overlappingCards } from '../overlappingCards'
 import { resourceCardDeck } from '../resourceCardDeck'
@@ -44,6 +45,7 @@ const ALLOWED_SECTION_TYPES_WITHIN_SCROLLER: FieldDefinition[] = [
   awardsSlider,
   conversionPanel,
   hero,
+  heroMarquee,
   bentoBox,
   imageGallery,
   overlappingCards,

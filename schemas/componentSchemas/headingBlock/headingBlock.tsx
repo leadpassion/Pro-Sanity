@@ -1,5 +1,5 @@
 import { complexComponentBody } from '@/schemas/fields'
-import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
+import { ctaCard } from './ctaCard/ctaCard'
 import { eyebrow } from '@/schemas/fields/eyebrow'
 import { heading } from '@/schemas/fields/heading'
 import { richImage } from '@/schemas/fields/richImage'
@@ -35,9 +35,20 @@ export const headingBlock = definePageComponent({
       type: 'simpleRichText',
     }),
     {
-      ...ctaBar,
+      ...complexComponentBody,
+      name: 'body',
+      title: 'Body',
+      description:
+        'This content is shown on the left side of the hero. If the alignment is set to center, this content will be centered.',
+      of: [...complexComponentBody.of, ctaCard],
       options: {
-        allowedCtaTypes: ['link', 'internalLink', 'download', 'emailCapture'],
+        allowedCtaTypes: [
+          'link',
+          'internalLink',
+          'emailCapture',
+          'playVideo',
+          'glassLinkCard',
+        ],
       },
     },
     defineField({

@@ -7,16 +7,13 @@ interface PreviewHeadingBlockProps extends PreviewProps {
   eyebrow?: TypedObject[]
   heading?: TypedObject[]
   subheading?: TypedObject[]
-  ctas?: {
-    actionType: string
-    buttonText?: string
-  }[]
+  body?: TypedObject[]
 }
 
 export const PreviewHeadingBlock = (props: PreviewHeadingBlockProps) => {
-  const { renderDefault, eyebrow, heading, subheading, ctas } = props
+  const { renderDefault, eyebrow, heading, subheading, body } = props
 
-  const nothingToPreview = !eyebrow && !heading && !subheading && !ctas
+  const nothingToPreview = !eyebrow && !heading && !subheading && !body
 
   if (nothingToPreview) {
     return renderDefault({ ...props, subtitle: 'No content added' })
@@ -25,6 +22,7 @@ export const PreviewHeadingBlock = (props: PreviewHeadingBlockProps) => {
   const eyebrowString = blockPreview(eyebrow)?.trim()
   const headingString = blockPreview(heading)?.trim()
   const subheadingString = blockPreview(subheading)?.trim()
+  const bodyString = blockPreview(body)?.trim()
 
   return (
     <Box>
@@ -46,19 +44,10 @@ export const PreviewHeadingBlock = (props: PreviewHeadingBlockProps) => {
               {subheadingString}
             </Text>
           )}
-          {ctas && ctas.length > 0 && (
-            <Flex direction="row" gap={2}>
-              {ctas?.map((cta) => (
-                <Card
-                  key={`cta-${cta.buttonText}`}
-                  radius="full"
-                  border
-                  padding={2}
-                >
-                  <Text size={0}>{cta.buttonText}</Text>
-                </Card>
-              ))}
-            </Flex>
+          {bodyString && (
+            <Text size={1} muted>
+              {bodyString}
+            </Text>
           )}
         </Stack>
       </Card>

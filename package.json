@@ -9,7 +9,7 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "build": "sanity build",
-    "typegen": "sanity schema extract --workspace production && sanity typegen generate",
+    "typegen": "sanity schema extract --workspace development && sanity typegen generate",
     "script:prepare-articles": "tsx --env-file=.env.local scripts/prepareArticles --log-level error",
     "script:prepare-case-studies": "tsx --env-file=.env.local scripts/prepareCaseStudies --log-level error",
     "script:prepare-brands": "tsx --env-file=.env.local scripts/prepareBrands --log-level error",
