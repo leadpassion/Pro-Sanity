@@ -166,7 +166,7 @@ const eventsAndWebinarsMenu = (S: StructureBuilder) =>
 
 const guidesAndReportsMenu = (S: StructureBuilder) =>
   S.listItem()
-    .title('Guides & Reports')
+    .title('Downloads')
     .icon(IoAnalytics)
     .child(
       S.list()
