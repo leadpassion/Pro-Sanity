@@ -9,7 +9,6 @@ import {
 import { definePageBodyField } from '../../fields/definePageBodyField'
 import { defineSeoField } from '@/schemas/fields/defineSeoField'
 import { defineLanguageField } from '@/schemas/fields/defineLanguageField'
-import { NikanImage } from '@/lib'
 import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
 import { defineCategoriesField } from '@/schemas/fields/defineCategoriesField'
 import { singletonPageComponent } from '@/schemas/componentSchemas'
@@ -203,7 +202,7 @@ export const definePageType = (props: PageTypeProps | void) => {
         language,
       }) => {
         const wholeBody = [...(mandatoryBodyComponents || []), ...(body || [])]
-        const media = wholeBody.length ? undefined : NikanImage
+        const media = undefined;
         const slugPreview = slug ? `${slug}` : 'Not published'
         const subtitle = [language, slugPreview].filter(Boolean).join(' | ')
 
