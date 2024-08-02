@@ -60,7 +60,7 @@ export const cta = defineType({
       options: {
         list: BUTTON_STYLES,
       },
-      initialValue: 'purple-button',
+      initialValue: 'blue-fill',
       hidden: ({ parent }) => !parent?.type,
     }),
 
