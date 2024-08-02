@@ -34,7 +34,7 @@ export const ctaAction = defineField({
       options: {
         list: BUTTON_STYLES,
       },
-      initialValue: 'purple-button',
+      initialValue: 'blue-fill',
     }),
 
     defineField({

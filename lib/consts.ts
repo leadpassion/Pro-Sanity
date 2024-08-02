@@ -29,36 +29,28 @@ export const SPECIAL_BRANDING_OPTIONS: TitledListValue<string>[] = [
 
 export const BUTTON_STYLES: TitledListValue<string>[] = [
   {
-    title: 'Purple Button',
-    value: 'purple-button',
+    title: 'Blue Fill',
+    value: 'blue-fill',
   },
   {
-    title: 'Black Button',
-    value: 'black-button',
+    title: 'Titanic Fill',
+    value: 'titanic-fill',
   },
   {
-    title: 'White Button',
-    value: 'white-button',
+    title: 'Black Fill',
+    value: 'black-fill',
   },
   {
-    title: 'Gradient Button',
-    value: 'gradient-button',
+    title: 'White Fill',
+    value: 'white-fill',
   },
   {
-    title: 'White Ghost Link',
-    value: 'white-ghost-link',
+    title: 'Blue Link',
+    value: 'blue-link',
   },
   {
-    title: 'Purple Ghost Button',
-    value: 'purple-ghost-button',
-  },
-  {
-    title: 'Gray Link',
-    value: 'gray-link',
-  },
-  {
-    title: 'Purple Link',
-    value: 'purple-link',
+    title: 'White Link',
+    value: 'white-link',
   },
 ]
 

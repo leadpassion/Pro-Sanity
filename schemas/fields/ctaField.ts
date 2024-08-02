@@ -45,7 +45,7 @@ export const ctaField = defineField({
       options: {
         list: BUTTON_STYLES,
       },
-      initialValue: 'purple-button',
+      initialValue: 'blue-fill',
       hidden: ({ parent }) => !parent?.type,
     }),
 
