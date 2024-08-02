@@ -147,40 +147,28 @@ export const heroMarquee = defineField({
           ],
         }),
         defineField({
-          name: 'trustbar1',
-          title: 'Trustbar1',
-          type: 'object',
-          fields: [
-            defineField({
-              ...trustBar,
-            }),
-            defineField({
-              name: 'token',
-              title: 'Token',
-              type: 'string',
-            }),
-          ],
-          options: {
-            collapsible: false,
-          },
-        }),
-        defineField({
-          name: 'trustbar2',
-          title: 'Trustbar2',
-          type: 'object',
-          fields: [
-            defineField({
-              ...trustBar,
-            }),
-            defineField({
-              name: 'token',
-              title: 'Token',
-              type: 'string',
+          name: 'trustbars',
+          title: 'Trustbars',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'object',
+              fields: [
+                defineField({
+                  ...trustBar,
+                }),
+                defineField({
+                  name: 'token',
+                  title: 'Token',
+                  type: 'reference',
+                  to: [{ type: 'token' }],
+                }),
+              ],
+              options: {
+                collapsible: false,
+              },
             }),
           ],
-          options: {
-            collapsible: false,
-          },
         }),
       ],
       options: {
@@ -214,4 +202,3 @@ export const heroMarquee = defineField({
     input: GenericInputWithJsonView,
   },
 })
-
