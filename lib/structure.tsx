@@ -89,24 +89,18 @@ const mainSitePagesMenu = (S: StructureBuilder) =>
                 .documentId('450399dd-26cd-4b95-a0f9-1574a1d3a638'),
             ),
           S.listItem()
-            .title('The Braze Platform')
+            .title('Why Webstacks')
             .icon(BsQuestionCircle)
             .child(
               S.document()
                 .schemaType('page')
-                .documentId('imported-craft-26964'),
-            ),
-          S.listItem()
-            .title('Get Started')
-            .icon(StarIcon)
-            .child(
-              S.document().schemaType('page').documentId('imported-craft-397'),
+                .documentId('3dde6e49-bb93-478a-b18f-3e68e2913a82'),
             ),
           S.listItem()
             .title('About')
             .icon(UserIcon)
             .child(
-              S.document().schemaType('page').documentId('imported-craft-772'),
+              S.document().schemaType('page').documentId('6f66eef8-b9f2-4092-a818-cd1fe03a241e'),
             ),
         ]),
     )

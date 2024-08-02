@@ -4,7 +4,7 @@ import { downloadLink } from '@/schemas/fields/linkTypes/downloadLink'
 import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
 import { link } from '@/schemas/fields/linkTypes/link'
 import { DocumentPdfIcon } from '@sanity/icons'
-import { SiMarketo } from 'react-icons/si'
+import { SiHubspot } from 'react-icons/si'
 import { defineArrayMember, defineType } from 'sanity'
 
 export const legalRichText = defineType({
@@ -62,7 +62,7 @@ export const legalRichText = defineType({
     defineArrayMember({
       type: 'reference',
       to: [{ type: 'marketoForm' }],
-      icon: SiMarketo,
+      icon: SiHubspot,
     }),
   ],
 })
