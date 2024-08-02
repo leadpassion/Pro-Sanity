@@ -1,12 +1,15 @@
 import { complexComponentBody } from '@/schemas/fields'
-import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
 import { eyebrow } from '@/schemas/fields/eyebrow'
 import { heading } from '@/schemas/fields/heading'
 import { richImage } from '@/schemas/fields/richImage'
 import { GoHeading } from 'react-icons/go'
-import { defineField } from 'sanity'
+import { defineField, defineArrayMember } from 'sanity'
+import { tokenReference } from '@/schemas/fields/tokenReference'
 import { blockPreview } from 'sanity-pills'
 import { definePageComponent } from '../definePageComponent'
+import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
 
 export const headingBlock = definePageComponent({
   name: 'headingBlock',
@@ -30,16 +33,36 @@ export const headingBlock = definePageComponent({
       },
     },
     defineField({
-      name: 'subheading',
-      title: 'Subheading',
-      type: 'simpleRichText',
+      name: 'body',
+      title: 'body',
+      description:
+        'This content is shown on the left side of the hero. If the alignment is set to center, this content will be centered.',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'block',
+          styles: [],
+          marks: {
+            annotations: [link, internalLink],
+          },
+          of: [tokenReference],
+        }),
+        {
+          ...ctaBar,
+          description:
+            'These CTAs will be displayed below the subheading and above the CTA cards.',
+          options: {
+            allowedCtaTypes: [
+              'link',
+              'internalLink',
+              'download',
+              'emailCapture',
+            ],
+          },
+        },
+      ],
+      group: 'content',
     }),
-    {
-      ...ctaBar,
-      options: {
-        allowedCtaTypes: ['link', 'internalLink', 'download', 'emailCapture'],
-      },
-    },
     defineField({
       name: 'layout',
       title: 'Layout',

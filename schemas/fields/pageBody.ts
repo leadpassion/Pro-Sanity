@@ -16,6 +16,7 @@ import {
   headingBlock,
   hero,
   heroWithForm,
+  heroMarquee,
   imageBlock,
   imageGallery,
   logoLinks,
@@ -66,6 +67,7 @@ export const pageBody = defineField({
     // Intros
     hero,
     heroWithForm,
+    heroMarquee,
     headingBlock,
 
     // Misc.
@@ -109,7 +111,7 @@ export const pageBody = defineField({
         {
           name: 'intros',
           title: 'Intros',
-          of: ['hero', 'heroWithForm', 'headingBlock'],
+          of: ['hero', 'heroWithForm', 'heroMarquee', 'headingBlock'],
         },
         {
           name: 'customers',

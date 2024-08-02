@@ -25,8 +25,8 @@ To run the studio locally:
 
 This repo is hooked up to a project on Braze's vercel instance. There are two main domains:
 
-- Changes pushed to `production` are built at [`braze-sanity-studio.vercel.app`](https://webstacks-sanity-studio.vercel.app).
-- Changes pushed to `main` are built at [`braze-sanity-studio-dev.vercel.app`](https://webstacks-sanity-studio-dev.vercel.app)
+- Changes pushed to `production` are built at [`webstacks-sanity-studio.vercel.app`](https://webstacks-sanity-studio.vercel.app).
+- Changes pushed to `main` are built at [`webstacks-sanity-studio-dev.vercel.app`](https://webstacks-sanity-studio-dev.vercel.app)
 
 > [!IMPORTANT]  
 > When running locally or on a vercel preview deployment, the studio will default to using the `development` dataset. You can tell which dataset you're using or switch between them by looking at the [menu](/docs/assets/dataset-menu.png) in the upper left-hand corner of the window.
