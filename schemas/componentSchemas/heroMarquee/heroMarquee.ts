@@ -214,3 +214,4 @@ export const heroMarquee = defineField({
     input: GenericInputWithJsonView,
   },
 })
+
