@@ -9,7 +9,7 @@ import { defineField, defineArrayMember } from 'sanity'
 import { tokenReference } from '@/schemas/fields/tokenReference'
 import { blockPreview } from 'sanity-pills'
 import { definePageComponent } from '../definePageComponent'
-import { ctaCard } from './ctaCard'
+import { ctaBar } from '@/schemas/fields/complexComponentBody/ctaBar/ctaBar'
 
 export const headingBlock = definePageComponent({
   name: 'headingBlock',
@@ -48,9 +48,16 @@ export const headingBlock = definePageComponent({
           of: [tokenReference],
         }),
         {
-          ...ctaCard,
+          ...ctaBar,
+          description:
+            'These CTAs will be displayed below the subheading and above the CTA cards.',
           options: {
-            allowedCtaTypes: ['link', 'internalLink', 'download'],
+            allowedCtaTypes: [
+              'link',
+              'internalLink',
+              'download',
+              'emailCapture',
+            ],
           },
         },
       ],
