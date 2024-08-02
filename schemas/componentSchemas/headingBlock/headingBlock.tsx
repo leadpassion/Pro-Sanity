@@ -1,12 +1,15 @@
 import { complexComponentBody } from '@/schemas/fields'
-import { ctaCard } from './ctaCard/ctaCard'
+import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
+import { link } from '@/schemas/fields/linkTypes/link'
 import { eyebrow } from '@/schemas/fields/eyebrow'
 import { heading } from '@/schemas/fields/heading'
 import { richImage } from '@/schemas/fields/richImage'
 import { GoHeading } from 'react-icons/go'
-import { defineField } from 'sanity'
+import { defineField, defineArrayMember } from 'sanity'
+import { tokenReference } from '@/schemas/fields/tokenReference'
 import { blockPreview } from 'sanity-pills'
 import { definePageComponent } from '../definePageComponent'
+import { ctaCard } from './ctaCard'
 
 export const headingBlock = definePageComponent({
   name: 'headingBlock',
@@ -30,27 +33,29 @@ export const headingBlock = definePageComponent({
       },
     },
     defineField({
-      name: 'subheading',
-      title: 'Subheading',
-      type: 'simpleRichText',
-    }),
-    {
-      ...complexComponentBody,
       name: 'body',
-      title: 'Body',
+      title: 'body',
       description:
         'This content is shown on the left side of the hero. If the alignment is set to center, this content will be centered.',
-      of: [...complexComponentBody.of, ctaCard],
-      options: {
-        allowedCtaTypes: [
-          'link',
-          'internalLink',
-          'emailCapture',
-          'playVideo',
-          'glassLinkCard',
-        ],
-      },
-    },
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'block',
+          styles: [],
+          marks: {
+            annotations: [link, internalLink],
+          },
+          of: [tokenReference],
+        }),
+        {
+          ...ctaCard,
+          options: {
+            allowedCtaTypes: ['link', 'internalLink', 'download'],
+          },
+        },
+      ],
+      group: 'content',
+    }),
     defineField({
       name: 'layout',
       title: 'Layout',

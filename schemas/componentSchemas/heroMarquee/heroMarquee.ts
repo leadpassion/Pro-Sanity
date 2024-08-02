@@ -2,19 +2,18 @@ import { GenericInputWithJsonView } from '@/components/GenericInputWithJsonView'
 import { complexComponentBody } from '@/schemas/fields'
 import { eyebrow } from '@/schemas/fields/eyebrow'
 import { heading } from '@/schemas/fields/heading'
-import { sharedComponentLayoutFields } from '@/schemas/fields/sharedComponentLayoutFields'
 import { sharedComponentSettingsFields } from '@/schemas/fields/sharedComponentSettingsFields'
 import {
   BlockContentIcon,
   ControlsIcon,
   ExpandIcon,
-  ImageIcon,
-  PanelLeftIcon,
   PanelRightIcon,
 } from '@sanity/icons'
 import { defineArrayMember, defineField } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 import { ctaCard } from './ctaCard/ctaCard'
+import { tokenReference } from '@/schemas/fields/tokenReference'
+import { trustBar } from './trustBar'
 
 export const heroMarquee = defineField({
   name: 'heroMarquee',
@@ -128,6 +127,67 @@ export const heroMarquee = defineField({
         ],
       },
     },
+
+    defineField({
+      name: 'trustbar',
+      title: 'Trustbar',
+      group: 'content',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'headline',
+          title: 'Headline',
+          type: 'array',
+          of: [
+            defineArrayMember({
+              type: 'block',
+              styles: [],
+              of: [tokenReference],
+            }),
+          ],
+        }),
+        defineField({
+          name: 'trustbar1',
+          title: 'Trustbar1',
+          type: 'object',
+          fields: [
+            defineField({
+              ...trustBar,
+            }),
+            defineField({
+              name: 'token',
+              title: 'Token',
+              type: 'string',
+            }),
+          ],
+          options: {
+            collapsible: false,
+          },
+        }),
+        defineField({
+          name: 'trustbar2',
+          title: 'Trustbar2',
+          type: 'object',
+          fields: [
+            defineField({
+              ...trustBar,
+            }),
+            defineField({
+              name: 'token',
+              title: 'Token',
+              type: 'string',
+            }),
+          ],
+          options: {
+            collapsible: false,
+          },
+        }),
+      ],
+      options: {
+        collapsible: true,
+        collapsed: true,
+      },
+    }),
 
     defineField({
       name: 'backgroundVideo',

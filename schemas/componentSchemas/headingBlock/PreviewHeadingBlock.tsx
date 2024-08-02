@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Stack, Text } from '@sanity/ui'
+import { Box, Card, Stack, Text } from '@sanity/ui'
 import type { PreviewProps, TypedObject } from 'sanity'
 import { blockPreview } from 'sanity-pills'
 
