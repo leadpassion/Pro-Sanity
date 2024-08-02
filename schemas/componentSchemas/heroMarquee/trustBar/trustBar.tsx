@@ -11,12 +11,6 @@ export const trustBar = defineField({
   icon: FaEllipsisH,
   fields: [
     defineField({
-      name: 'heading',
-      title: 'Heading',
-      type: 'string',
-      initialValue: 'Made to scale with companies of all sizes',
-    }),
-    defineField({
       name: 'style',
       title: 'Style',
       type: 'string',
