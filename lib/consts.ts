@@ -65,36 +65,12 @@ export type ButtonSize = (typeof BUTTON_SIZES)[number]
 // to meet the requirements of the simpler-color-picker plugin
 export const EYEBROW_COLORS = [
   {
-    label: 'Black',
-    value: 'hsla(220, 43%, 11%, 1)',
-  },
-  {
-    label: 'Green',
-    value: 'hsla(155, 91%, 24%, 1)',
-  },
-  {
-    label: 'Purple',
-    value: 'hsla(239, 99%, 39%, 1)',
-  },
-  {
-    label: 'Pink',
-    value: 'hsla(319, 89%, 82%, 1)',
-  },
-  {
-    label: 'Magenta',
-    value: 'hsla(327, 80%, 42%, 1)',
-  },
-  {
-    label: 'Orange',
-    value: 'hsla(22, 92%, 37%, 1)',
-  },
-  {
-    label: 'Gray',
-    value: 'hsla(221, 13%, 46%, 1)',
-  },
-  {
     label: 'White',
     value: 'hsla(0, 0%, 100%, 1)',
+  },
+  {
+    label: 'Blue',
+    value: 'hsla(209, 100%, 50%, 1)',
   },
 ]
 
@@ -135,100 +111,12 @@ export const ICON_COLORS = [
 
 export const PAGE_COMPONENT_BACKGROUND_COLORS = [
   {
-    label: 'Transparent',
-    value: 'transparent',
+    label: 'Black',
+    value: 'black',
   },
   {
     label: 'White',
     value: '#ffffff',
-  },
-  {
-    label: 'Blur',
-    value: '#FFFFFFCC'
-  },
-  {
-    label: 'Light Gray',
-    value: '#F9FAFB',
-  },
-  {
-    label: 'Medium Gray',
-    value: '#F3F3FA',
-  },
-  {
-    label: 'Pink',
-    value: '#F8D3E8',
-  },
-  {
-    label: 'Heat 1',
-    value:
-      'linear-gradient(127deg, #C9C4FF -18.91%, #801ED7 44.07%, #FFA524 104.04%)',
-  },
-  {
-    label: 'Heat 2',
-    value:
-      'linear-gradient(323deg, #E9371F -0.14%, #FFA524 49.92%, #FFA4FB 102.11%)',
-  },
-  {
-    label: 'Heat 2 (Reverse)',
-    value:
-      'linear-gradient(147deg, #E9371F -0.14%, #FFA524 49.92%, #FFA4FB 102.11%)',
-  },
-  {
-    label: 'Heat 3',
-    value:
-      'linear-gradient(326deg, #FFA524 -2.19%, #FFA4FB 50.13%, #D2F3F3 99.29%)',
-  },
-  {
-    label: 'Heat 3 (Reverse)',
-    value:
-      'linear-gradient(147deg, #FFA524 -2.19%, #FFA4FB 50.13%, #D2F3F3 99.29%)',
-  },
-  {
-    label: 'Heat 4',
-    value:
-      'linear-gradient(327deg, rgba(217, 213, 255, 0.00) -64.07%, #7C30D9 67.77%), linear-gradient(0deg, #FFA4FB 0%, #FFA4FB 100%), #FFF;',
-  },
-  {
-    label: 'Heat 4 (Reverse)',
-    value:
-      'linear-gradient(147deg, rgba(217, 213, 255, 0.00) -64.07%, #7C30D9 67.77%), linear-gradient(0deg, #FFA4FB 0%, #FFA4FB 100%), #FFF;',
-  },
-  {
-    label: 'Heat 5',
-    value:
-      'linear-gradient(0deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.40) 100%), linear-gradient(112deg, #D2F3F3 4.88%, #FFA4FB 61.95%, #FFA524 116.3%), linear-gradient(327deg, rgba(217, 213, 255, 0.00) -64.07%, #7C30D9 67.77%), linear-gradient(0deg, #FFA4FB 0%, #FFA4FB 100%), #FFF;',
-  },
-  {
-    label: 'Heat 6',
-    value: 'linear-gradient(95deg, #782DCF 0%, #FFA524 115.04%)',
-  },
-  {
-    label: 'Dark Flash',
-    value: 'var(--Colors-Background-bg-primary, #0C111D);',
-  },
-  {
-    label: 'Blur - Purple',
-    value: 'blur-purple',
-  },
-  {
-    label: 'Supergraphic 1',
-    value: 'supergraphic-1',
-  },
-  {
-    label: 'Supergraphic 2',
-    value: 'supergraphic-2',
-  },
-  {
-    label: 'Supergraphic 3',
-    value: 'supergraphic-3',
-  },
-  {
-    label: 'Supergraphic 4',
-    value: 'supergraphic-4',
-  },
-  {
-    label: 'Supergraphic 5',
-    value: 'supergraphic-5',
   },
 ]
 
@@ -266,28 +154,12 @@ export const TEXT_SIZES: TitledListValue<string>[] = [
     value: 'lg',
   },
   {
-    title: 'Display xs',
-    value: 'display-xs',
+    title: 'xl',
+    value: 'xl',
   },
   {
-    title: 'Display sm',
-    value: 'display-sm',
-  },
-  {
-    title: 'Display md',
-    value: 'display-md',
-  },
-  {
-    title: 'Display lg',
-    value: 'display-lg',
-  },
-  {
-    title: 'Display xl',
-    value: 'display-xl',
-  },
-  {
-    title: 'Display 2xl',
-    value: 'display-2xl',
+    title: '2xl',
+    value: '2xl',
   },
 ]
 

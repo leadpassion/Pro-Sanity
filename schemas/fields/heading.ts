@@ -50,6 +50,6 @@ export const heading = defineField({
   ],
   initialValue: {
     headingLevel: 'h2',
-    headingSize: 'display-lg',
+    headingSize: 'lg',
   },
 })
