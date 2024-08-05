@@ -161,6 +161,34 @@ export const TEXT_SIZES: TitledListValue<string>[] = [
     title: '2xl',
     value: '2xl',
   },
+  {
+    title: '3xl',
+    value: '3xl',
+  },
+  {
+    title: '4xl',
+    value: '4xl',
+  },
+  {
+    title: '5xl',
+    value: '5xl',
+  },
+  {
+    title: '6xl',
+    value: '6xl',
+  },
+  {
+    title: '7xl',
+    value: '7xl',
+  },
+  {
+    title: '8xl',
+    value: '8xl',
+  },
+  {
+    title: '9xl',
+    value: '9xl',
+  },
 ]
 
 export const COLORS = {
