@@ -1,4 +1,3 @@
-import { NikanImage } from '@/lib'
 import { LANG_CODE_FIELD_NAME } from '@/lib/localization.config'
 import { singletonPageComponent } from '@/schemas/componentSchemas'
 import { categories } from '@/schemas/fields/categories'
@@ -155,19 +154,14 @@ export const genericPage = defineType({
       title,
       internalName,
       slug,
-      mandatoryBodyComponents,
-      body,
       language,
     }) => {
-      const wholeBody = [...(mandatoryBodyComponents || []), ...(body || [])]
-      const media = wholeBody.length ? undefined : NikanImage
       const slugPreview = slug ? `${slug}` : 'Not published'
       const subtitle = [language, slugPreview].filter(Boolean).join(' | ')
 
       return {
         title: internalName || title,
         subtitle,
-        media,
       }
     },
   },
