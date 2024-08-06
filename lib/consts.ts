@@ -76,36 +76,16 @@ export const EYEBROW_COLORS = [
 
 export const ICON_COLORS = [
   {
-    label: 'Black',
+    label: 'White',
     value: 'hsla(220, 43%, 11%, 1)',
   },
   {
-    label: 'Green',
+    label: 'Black',
     value: 'hsla(155, 91%, 24%, 1)',
   },
   {
-    label: 'Purple',
+    label: 'Blue',
     value: 'hsla(239, 99%, 39%, 1)',
-  },
-  {
-    label: 'Pink',
-    value: 'hsla(319, 89%, 82%, 1)',
-  },
-  {
-    label: 'Magenta',
-    value: 'hsla(327, 80%, 42%, 1)',
-  },
-  {
-    label: 'Bright Orange',
-    value: 'hsla(34, 94%, 50%, 1)',
-  },
-  {
-    label: 'Orange',
-    value: 'hsla(22, 92%, 37%, 1)',
-  },
-  {
-    label: 'Gray',
-    value: 'hsla(221, 13%, 46%, 1)',
   },
 ]
 
