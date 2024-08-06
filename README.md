@@ -1,4 +1,4 @@
-# Braze Sanity Studio
+# Webstacks Sanity Studio
 
 > [!IMPORTANT]  
 > Check out the [documentation for doctypes, custom fields, and scripts](docs/index.md) to see sample groq queries and more.
@@ -23,7 +23,7 @@ To run the studio locally:
 
 ## Deploying
 
-This repo is hooked up to a project on Braze's vercel instance. There are two main domains:
+This repo is hooked up to a project on Webstacks' vercel instance. There are two main domains:
 
 - Changes pushed to `production` are built at [`webstacks-sanity-studio.vercel.app`](https://webstacks-sanity-studio.vercel.app).
 - Changes pushed to `main` are built at [`webstacks-sanity-studio-dev.vercel.app`](https://webstacks-sanity-studio-dev.vercel.app)
