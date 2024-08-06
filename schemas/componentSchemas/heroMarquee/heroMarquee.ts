@@ -106,7 +106,7 @@ export const heroMarquee = defineField({
       group: 'content',
       initialValue: {
         headingLevel: 'h1',
-        headingSize: 'display-xl',
+        headingSize: '2xl',
       },
     },
     {
