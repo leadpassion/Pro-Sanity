@@ -1,7 +1,5 @@
 import { Box, Text } from '@sanity/ui'
 import { type PreviewProps, defineField } from 'sanity'
-import { footerBadgeRow } from './footerBadgeRow'
-import { footerDivider } from './footerDivider'
 import { footerNavLink } from './footerNavLink'
 
 type FooterNavLink = {
@@ -10,17 +8,8 @@ type FooterNavLink = {
   isHeading: boolean
 }
 
-type FooterDivider = {
-  _type: 'divider'
-}
-
-type FooterBadgeRow = {
-  _type: 'footerBadgeRow'
-  items: FooterNavLink[]
-}
-
 interface PreviewNavColumnProps extends PreviewProps {
-  navItems: (FooterNavLink | FooterDivider | FooterBadgeRow)[]
+  navItems: FooterNavLink[]
 }
 
 const PreviewNavColumn = (props: PreviewNavColumnProps) => {
@@ -89,7 +78,7 @@ export const navColumn = defineField({
       name: 'items',
       title: 'Items',
       type: 'array',
-      of: [footerNavLink, footerDivider, footerBadgeRow],
+      of: [footerNavLink],
     }),
   ],
   preview: {
