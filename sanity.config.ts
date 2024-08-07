@@ -13,8 +13,8 @@ import { defineDocuments, presentationTool } from '@sanity/presentation'
 import {
   documentInternationalizationPluginWithConfig,
   internationalizeArrayPluginWithConfig,
-  supportedLanguageCodes,
 } from './lib/localization.config'
+import { WebstacksLogo } from './lib/WebstackLogo'
 
 import './static/studioStyles.css'
 import { locationResolver } from './lib/locationResolver'
@@ -35,69 +35,6 @@ const plugins = [
     },
     resolve: {
       mainDocuments: defineDocuments([
-        // One-off pages
-        // {
-        //   route: '/',
-        //   filter: '_type == "page" && seo.slug.current == "/"',
-        // },
-        // {
-        //   route: '/resources/benchmarks',
-        //   filter:
-        //     '_type == "page" && seo.slug.current == "resources/benchmarks"',
-        // },
-        // {
-        //   route: '/api',
-        //   filter: '_type == "page" && seo.slug.current == "/"',
-        // },
-        // // Resources
-        // {
-        //   route: '/customers/:slug',
-        //   filter: '_type == "caseStudy" && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/resources/articles/:slug',
-        //   filter: '_type == "blogPost" && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/resources/videos/:slug',
-        //   filter: '_type == "videoPage" && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/resources/webinars-and-events/:slug',
-        //   filter: '_type in ["webinar", "event"] && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/resources/reports-and-guides/:slug',
-        //   filter: '_type in ["report", "guide"] && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/product/:slug',
-        //   filter:
-        //     '_type == "productPage" && seo.slug.current == "product/" + $slug',
-        // },
-        // {
-        //   route: '/solutions/:slug',
-        //   filter:
-        //     '_type in ["useCasePage", "industryPage"] && seo.slug.current == "solutions/" + $slug',
-        // },
-        // {
-        //   route: '/partners/technology-partners/:slug',
-        //   filter: '_type == "technologyPartner" && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/partners/solutions-partners/:slug',
-        //   filter: '_type == "solutionsPartner" && seo.slug.current == $slug',
-        // },
-        // {
-        //   route: '/press-releases/:slug',
-        //   filter: '_type == "pressRelease" && seo.slug.current == $slug',
-        // },
-        // All other pages
-        // {
-        //   route: '/(.*)',
-        //   filter:
-        //     '_type in ["page", "productPage", "personaPage", "industryPage", "useCasePage", "paidLandingPage"] && seo.slug.current == $0',
-        // },
         {
           route: '/(.*)',
           // @ts-expect-error - valid filter params can include records with a string array value
@@ -145,6 +82,7 @@ const prodConfig = defineConfig({
   name: 'production',
   dataset: datasetProd,
   basePath: '/production',
+  icon: WebstacksLogo,
 
   beta,
   projectId,
@@ -158,6 +96,7 @@ const devConfig = defineConfig({
   name: 'development',
   dataset: datasetDev,
   basePath: '/development',
+  icon: WebstacksLogo,
 
   beta,
   projectId,
