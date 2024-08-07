@@ -14,7 +14,8 @@ import {
   documentInternationalizationPluginWithConfig,
   internationalizeArrayPluginWithConfig,
 } from './lib/localization.config'
-import { WebstacksLogo } from './lib/WebstackLogo'
+import { webstacksGlyphLight } from './lib/webstacksGlyphLight'
+import { webstacksGlyphDark } from './lib/webstacksGlyphDark'
 
 import './static/studioStyles.css'
 import { locationResolver } from './lib/locationResolver'
@@ -82,7 +83,7 @@ const prodConfig = defineConfig({
   name: 'production',
   dataset: datasetProd,
   basePath: '/production',
-  icon: WebstacksLogo,
+  icon: webstacksGlyphLight,
 
   beta,
   projectId,
@@ -96,7 +97,7 @@ const devConfig = defineConfig({
   name: 'development',
   dataset: datasetDev,
   basePath: '/development',
-  icon: WebstacksLogo,
+  icon: webstacksGlyphDark,
 
   beta,
   projectId,

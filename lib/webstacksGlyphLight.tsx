@@ -1,7 +1,7 @@
-export const WebstacksLogo = () => {
+export const webstacksGlyphLight = () => {
   return (
     <img
-      src="/static/webstacks-logo.jpg"
+      src="/static/webstacks-glyph-light.svg"
       alt="Webstacks!!!"
       width={25}
       height={25}
