@@ -16,7 +16,7 @@ export const conversionPanel = definePageComponent({
       ...heading,
       initialValue: {
         headingLevel: 'h2',
-        headingSize: 'display-lg',
+        headingSize: '2xl',
       },
     },
     defineField({

@@ -1,9 +1,7 @@
-import { complexComponentBody } from '@/schemas/fields'
 import { internalLink } from '@/schemas/fields/linkTypes/internalLink'
 import { link } from '@/schemas/fields/linkTypes/link'
 import { eyebrow } from '@/schemas/fields/eyebrow'
 import { heading } from '@/schemas/fields/heading'
-import { richImage } from '@/schemas/fields/richImage'
 import { GoHeading } from 'react-icons/go'
 import { defineField, defineArrayMember } from 'sanity'
 import { tokenReference } from '@/schemas/fields/tokenReference'
@@ -18,18 +16,12 @@ export const headingBlock = definePageComponent({
     'A heading block, including eyebrow, heading, subheading, and optional CTAs.',
   icon: GoHeading,
   fields: [
-    {
-      ...richImage,
-      name: 'image',
-      title: 'Image',
-      group: 'media',
-    },
     eyebrow,
     {
       ...heading,
       initialValue: {
         headingLevel: 'h2',
-        headingSize: 'display-xl',
+        headingSize: '2xl',
       },
     },
     defineField({
@@ -77,13 +69,6 @@ export const headingBlock = definePageComponent({
       },
       initialValue: 'default',
     }),
-    {
-      ...complexComponentBody,
-      name: 'bodyRight',
-      title: 'Body Right',
-      group: 'right',
-      hidden: ({ parent }) => parent?.layout !== 'split',
-    },
   ],
   preview: {
     select: {

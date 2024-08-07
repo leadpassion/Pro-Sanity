@@ -60,11 +60,4 @@ export const sharedComponentLayoutFields = [
       colorList: PAGE_COMPONENT_BACKGROUND_COLORS,
     },
   }),
-  defineField({
-    name: 'backgroundImage',
-    title: 'Background Image',
-    type: 'image',
-    hidden: ({ parent }) => !parent.backgroundIsCustomized,
-    group: 'layout',
-  }),
 ]

@@ -3,6 +3,7 @@ import { definePageComponent } from '../definePageComponent'
 import { TbPercentage } from 'react-icons/tb'
 import { stat } from './stat'
 import { PreviewStatsPanel } from './PreviewStatsPanel'
+import { heading } from '@/schemas/fields/heading'
 
 export const statsPanel = definePageComponent({
   name: 'statsPanel',
@@ -10,24 +11,24 @@ export const statsPanel = definePageComponent({
   description: 'A series of cards that display statistics.',
   icon: TbPercentage,
   fields: [
+    {
+      ...heading,
+      group: 'content',
+      initialValue: {
+        headingLevel: 'h1',
+        headingSize: '2xl',
+      },
+    },
+    defineField({
+      name: 'subheading',
+      title: 'Subheading',
+      type: 'string',
+    }),
     defineField({
       name: 'stats',
       title: 'Stats',
       type: 'array',
       of: [stat],
-    }),
-    defineField({
-      name: 'style',
-      title: 'Style',
-      description: 'The style of cards displayed in the stat panel.',
-      type: 'string',
-      options: {
-        list: [
-          { title: 'Gray (4 columns with gray cards)', value: 'gray' },
-          { title: 'Glass (3 columns with translucent cards)', value: 'glass' },
-        ],
-      },
-      initialValue: 'gray',
     }),
   ],
   preview: {
