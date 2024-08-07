@@ -78,7 +78,7 @@ const beta = {
 // ENVIRONMENT-SPECIFIC CONFIGS
 
 const prodConfig = defineConfig({
-  title: 'Webstacks',
+  title: 'Production',
   name: 'production',
   dataset: datasetProd,
   basePath: '/production',
@@ -92,7 +92,7 @@ const prodConfig = defineConfig({
 })
 
 const devConfig = defineConfig({
-  title: 'Webstacks (Dev)',
+  title: 'Development',
   name: 'development',
   dataset: datasetDev,
   basePath: '/development',
