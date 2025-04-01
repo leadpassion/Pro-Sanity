@@ -14,8 +14,6 @@ import {
   IoBusiness,
   IoNavigateCircleOutline,
   IoGlobeOutline,
-  IoDocument,
-  IoDocuments,
 } from 'react-icons/io5'
 import { FaRegHandshake } from 'react-icons/fa6'
 import { StructureBuilder } from 'sanity/structure'

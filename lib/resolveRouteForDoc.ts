@@ -1,4 +1,4 @@
-import { DocumentResolver, DocumentResolverContext } from '@sanity/presentation'
+import type { DocumentResolver, DocumentResolverContext } from '@sanity/presentation'
 import { supportedLanguageCodes } from './localization.config'
 
 export const resolveDocForRoute = (
