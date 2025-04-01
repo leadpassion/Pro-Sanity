@@ -87,9 +87,6 @@ export const generateCategoryReferences = (
     )
   })
 
-  // log in blue for visibility
-  // console.info('\x1b[34m%s\x1b[0m', '  ??? groupedByType', groupedByType)
-
   return groupedByType
 }
 

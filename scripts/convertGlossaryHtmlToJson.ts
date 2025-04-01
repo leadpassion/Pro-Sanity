@@ -12,18 +12,6 @@ const html = fs.readFileSync('scripts/data/misc/glossary.html', 'utf8')
 // Load the HTML into Cheerio
 const $ = cheerio.load(html)
 
-// Each glossary term follows the same structure:
-// <h1><!--term--></h1>
-// <p><!--pronunciation--></p>
-// <h2>TL:DR</h2>
-// <p><!--tldr--></p>
-// <h2>DEFINITION</h2>
-// <p><!--definition--></p>
-// <h2>USED IN A SENTENCE</h2>
-// <p><!--usedInASentence--></p>
-
-// The glossary terms should be stored in an array of GlossaryTerm objects
-
 type GlossaryTerm = {
   _id: string
   _type: string
