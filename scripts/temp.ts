@@ -21,8 +21,6 @@ fs.createReadStream('scripts/data/misc/logs.ndjson')
     }
   })
   .on('end', () => {
-    console.log('done parsing')
-    console.log('tempArr.length', tempArr.length)
     const bandwidthInGBs = bandwidthInBytes / 1024 / 1024 / 1024
     console.log('bandwidthInGBs', bandwidthInGBs)
     console.log('seen domains', seenDomains)
