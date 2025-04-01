@@ -12,7 +12,6 @@ import {
   getSeoMetadata,
   processCraftHrefMarks,
 } from './helpers'
-import { htmlToText } from 'html-to-text'
 import { handleVideoEmbedField } from './helpers/handleVideoEmbedField'
 import { htmlToBlocks } from '@sanity/block-tools'
 import { JSDOM } from 'jsdom'
@@ -32,8 +31,11 @@ const buildImportFile = async () => {
   // await processPages(jpVideoPages as unknown as CraftVideoPage[], 'ja')
 
   for (const handler in exportHandlers) {
+    // biome-ignore lint/suspicious/noPrototypeBuiltins: <explanation>
     if (exportHandlers.hasOwnProperty(handler)) {
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       exportHandlers[handler as keyof ExportHandlers]!.writeTranslations()
+      // biome-ignore lint/style/noNonNullAssertion: <explanation>
       exportHandlers[handler as keyof ExportHandlers]!.save()
     }
   }
