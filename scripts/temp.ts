@@ -10,7 +10,7 @@ console.log('start parsing')
 
 fs.createReadStream('scripts/data/misc/logs.ndjson')
   .pipe(ndjson.parse())
-  .on('data', function (obj) {
+  .on('data', (obj) => {
     const domain = obj.attributes.sanity.domain
     const url = obj.body.url
 
@@ -20,7 +20,7 @@ fs.createReadStream('scripts/data/misc/logs.ndjson')
       bandwidthInBytes += obj.body.requestSize
     }
   })
-  .on('end', function () {
+  .on('end', () => {
     console.log('done parsing')
     console.log('tempArr.length', tempArr.length)
     const bandwidthInGBs = bandwidthInBytes / 1024 / 1024 / 1024
