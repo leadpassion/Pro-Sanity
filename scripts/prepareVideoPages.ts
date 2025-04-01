@@ -1,6 +1,4 @@
 import enVideoPages from '@/scripts/data/craftExports/craftVideoPages.json'
-// import jpVideoPages from 'scripts/data/craftExports/localization/craftVideoPagesJP.json'
-// no KR
 import { CraftVideoPage, ExportHandlers } from './craftTypes'
 import {
   ExportVideoPages,
