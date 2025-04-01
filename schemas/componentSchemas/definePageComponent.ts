@@ -56,7 +56,7 @@ export const definePageComponent = ({
       ...components,
       // input: GenericInputWithJsonView,
     },
-    // @ts-expect-error - this is a valid type
+    
     groups: [
       {
         name: 'content',
